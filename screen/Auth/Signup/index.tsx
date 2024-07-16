@@ -9,8 +9,8 @@ import {
   Dimensions,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
-import KeypadButton from "../../components/Button/KeypadButtons";
-import AppLogo from "../../assets/images/appLogo.png";
+import KeypadButton from "../../../components/Button/KeypadButtons";
+import AppLogo from "../../../assets/images/appLogo.png";
 import { styles } from "./Styles";
 import Button from "@/components/Button/Button";
 
@@ -58,7 +58,7 @@ export default function SignUp() {
       <Image source={AppLogo} style={styles.appLogo} />
       <Text style={styles.title}>Sign up</Text>
       <View style={styles.inputContainer}>
-        <Text style={styles.inputText}>{mobileNumber}</Text>
+        <Text style={styles.inputText}>{mobileNumber? mobileNumber: 'Enter your mobile number'}</Text>
       </View>
       <TouchableOpacity
         onPress={() => Alert.alert("Redirect", "Navigate to sign in screen.")}
@@ -75,10 +75,10 @@ export default function SignUp() {
         journey!
       </Text>
       <View style={styles.breakLine} />
-      {/* <Button title="Accept And Continue" textStyles={styles.buttonText} onPress={handleSignUp} containerStyles={styles.button}/>  */}
-      <TouchableOpacity style={styles.button} onPress={handleSignUp}>
+      <Button title="Accept And Continue" textStyles={styles.buttonText} onPress={handleSignUp} containerStyles={styles.button}/> 
+      {/* <TouchableOpacity style={styles.button} onPress={handleSignUp}>
         <Text style={styles.buttonText}>Accept And Continue</Text>
-      </TouchableOpacity>
+      </TouchableOpacity> */}
       <View style={styles.keypad}>
         {renderKeypadRow(["1", "2", "3"])}
         {renderKeypadRow(["4", "5", "6"])}

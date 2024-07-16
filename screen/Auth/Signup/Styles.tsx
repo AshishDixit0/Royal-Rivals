@@ -1,5 +1,5 @@
 import { StyleSheet, Dimensions } from 'react-native';
-import { Colors } from '../../constants/Colors';
+import { Colors } from '../../../constants/Colors';
 
 const { width, height } = Dimensions.get('window');
 
@@ -22,7 +22,7 @@ export const styles = StyleSheet.create({
     logoText: {
       fontSize: 30,
       fontWeight: "bold",
-      color: "gold",
+      color: "golden",
     },
     title: {
       fontSize: 30,
@@ -38,11 +38,12 @@ export const styles = StyleSheet.create({
       borderRadius: 25,
       backgroundColor: "white",
       marginBottom: 20,
-      alignItems: "center",
+      alignItems: "flex-start",
     },
     inputText: {
       color: "black",
       fontSize: 18,
+      marginLeft: 20,
     },
     signInText: {
       color: "white",
@@ -61,10 +62,11 @@ export const styles = StyleSheet.create({
       marginVertical: 10,
     },
     button: {
-      backgroundColor: "gold",
+      backgroundColor: "rgba(239,156,31,255)",
       paddingVertical: 10,
       paddingHorizontal: 20,
-      borderRadius: 5,
+      marginTop: 20,
+      borderRadius: 30,
       marginBottom: 20,
     },
     buttonText: {
