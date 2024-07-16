@@ -24,4 +24,6 @@ export const Colors = {
     tabIconSelected: tintColorDark,
   },
   BACKGROUND_COLOR: '#160120', // login and sign up page background color
+  golden: '#ef9c1f',
+  whiteButton: '#fefffe',
 };
