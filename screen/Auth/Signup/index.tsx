@@ -8,10 +8,10 @@ import {
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import KeypadButton from "../../../components/Button/KeypadButtons";
-import AppLogo from "../../../assets/images/appLogo.png";
 import { styles } from "./Styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Button from "@/components/Button/Button";
+
 export default function SignUp({ navigation, route}: { route: any, navigation: any }) {
   const [mobileNumber, setMobileNumber] = useState("");
   
@@ -53,7 +53,7 @@ export default function SignUp({ navigation, route}: { route: any, navigation: a
 
   return (
     <View style={styles.container}>
-      <Image source={AppLogo} style={styles.appLogo} />
+      <Image source={require('../../../assets/images/appLogo.png')} style={styles.appLogo} />
       <Text style={styles.title}>Sign up</Text>
       <View style={styles.inputContainer}>
         <Text style={styles.inputText}>{mobileNumber? mobileNumber: 'Enter your mobile number'}</Text>
