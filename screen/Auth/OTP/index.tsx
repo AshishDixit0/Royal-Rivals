@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert, Image } from "react-native";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome";
 import KeypadButton from "../../../components/Button/KeypadButtons";
 import AppLogo from "../../../assets/images/appLogo.png";
@@ -7,8 +8,35 @@ import { styles } from "./Styles";
 import Button from "@/components/Button/Button";
 import { Colors } from "@/constants/Colors";
 
-export default function OTP() {
+export default function OTP({
+  route,
+  navigation,
+}: {
+  route: any;
+  navigation: any;
+}) {
   const [otp, setOtp] = useState("");
+  const [phoneNumber, setPhoneNumber] = useState(route.params?.phone);
+
+  useEffect(() => {
+    // Retrieve the stored phone number when the component mounts
+    const getPhoneNumber = async () => {
+      try {
+        const storedPhoneNumber = await AsyncStorage.getItem("phoneNumber");
+        console.log("this has been attained: ", storePhoneNumber);
+
+        if (storedPhoneNumber) {
+          setPhoneNumber(storedPhoneNumber);
+        } else {
+          setPhoneNumber("998XXXXXX9");
+        }
+      } catch (error) {
+        console.error("Failed to load phone number:", error);
+      }
+    };
+
+    getPhoneNumber();
+  }, []);
 
   const handleKeyPress = (value: string) => {
     if (value === "backspace") {
@@ -22,6 +50,8 @@ export default function OTP() {
     if (validateForm()) {
       // Handle OTP verification logic here
       Alert.alert("Success", "OTP verified successfully!");
+      // Store the phone number
+      storePhoneNumber("78XXXXXXXX7");
     }
   };
 
@@ -50,11 +80,19 @@ export default function OTP() {
     Alert.alert("Resend OTP", "OTP has been resent.");
   };
 
+  const storePhoneNumber = async (phoneNumber: string) => {
+    try {
+      await AsyncStorage.setItem("phoneNumber", phoneNumber);
+    } catch (error) {
+      console.error("Failed to save phone number:", error);
+    }
+  };
+
   return (
     <View style={styles.container}>
       <Image source={AppLogo} style={styles.appLogo} />
       <Text style={styles.title}>Enter OTP</Text>
-      <Text style={styles.subtitle}>Enter OTP sent to 78XXXXXXXX7</Text>
+      <Text style={styles.subtitle}>Enter OTP sent to {phoneNumber}</Text>
       <View style={styles.otpContainer}>
         {[...Array(6)].map((_, i) => (
           <View key={i} style={styles.otpDash}>

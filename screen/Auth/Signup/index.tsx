@@ -3,20 +3,18 @@ import {
   View,
   Text,
   TouchableOpacity,
-  StyleSheet,
   Alert,
   Image,
-  Dimensions,
 } from "react-native";
 import Icon from "react-native-vector-icons/FontAwesome";
 import KeypadButton from "../../../components/Button/KeypadButtons";
 import AppLogo from "../../../assets/images/appLogo.png";
 import { styles } from "./Styles";
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import Button from "@/components/Button/Button";
-
-export default function SignUp() {
+export default function SignUp({ navigation, route}: { route: any, navigation: any }) {
   const [mobileNumber, setMobileNumber] = useState("");
-
+  
   const handleKeyPress = (value: string) => {
     if (value === "backspace") {
       setMobileNumber(mobileNumber.slice(0, -1));
@@ -25,10 +23,10 @@ export default function SignUp() {
     }
   };
 
-  const handleSignUp = () => {
+  const handleSignUp = async() => {
     if (validateForm()) {
-      // Handle sign-up logic here
-      Alert.alert("Success", "Form submitted successfully!");
+      await AsyncStorage.setItem("phoneNumber", mobileNumber);
+      navigation.navigate('OTP', { phone: mobileNumber });
     }
   };
 
@@ -76,9 +74,6 @@ export default function SignUp() {
       </Text>
       <View style={styles.breakLine} />
       <Button title="Accept And Continue" textStyles={styles.buttonText} onPress={handleSignUp} containerStyles={styles.button}/> 
-      {/* <TouchableOpacity style={styles.button} onPress={handleSignUp}>
-        <Text style={styles.buttonText}>Accept And Continue</Text>
-      </TouchableOpacity> */}
       <View style={styles.keypad}>
         {renderKeypadRow(["1", "2", "3"])}
         {renderKeypadRow(["4", "5", "6"])}
