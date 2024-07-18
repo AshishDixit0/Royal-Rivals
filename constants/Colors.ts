@@ -30,5 +30,6 @@ export const Colors = {
   accountsPurplePage: '#160021',
   cardBackground: '#3c0b44',
   cardHolderbackground: '#160021',
-  accountBackground: '#4e1e49'
+  accountBackground: '#4e1e49',
+  checkboxBorder: '#EF9D1F'
 };

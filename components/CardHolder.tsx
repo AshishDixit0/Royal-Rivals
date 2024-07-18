@@ -3,14 +3,14 @@ import { View, StyleSheet, Text, Image, Dimensions } from 'react-native';
 import CardComponent from './Card';
 import { Colors } from '@/constants/Colors';
 
-const { width, height } = Dimensions.get('window');
+const { height } = Dimensions.get('window');
 
 const cardsData = [
-  { title: 'My Wallet', onPress: () => {}, link: '' },
+  { title: 'My Wallet', onPress: () => {}, link: 'MyWallet' },
   { title: 'Details', onPress: () => {}, link: 'Details' },
   { title: 'About Us', onPress: () => {}, link: 'AboutUs' },
-  { title: 'KYC', onPress: () => {}, link: '' },
-  { title: 'Settings', onPress: () => {}, link: '' },
+  { title: 'KYC', onPress: () => {}, link: 'KYC' },
+  { title: 'Settings', onPress: () => {}, link: 'Settings' },
 ];
 
 interface NavigationProps {
