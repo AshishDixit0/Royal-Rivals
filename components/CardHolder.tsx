@@ -6,7 +6,7 @@ import { Colors } from '@/constants/Colors';
 const { height } = Dimensions.get('window');
 
 const cardsData = [
-  { title: 'My Wallet', onPress: () => {}, link: 'MyWallet' },
+  { title: 'My Wallet', onPress: () => {}, link: 'Wallet' },
   { title: 'Details', onPress: () => {}, link: 'Details' },
   { title: 'About Us', onPress: () => {}, link: 'AboutUs' },
   { title: 'KYC', onPress: () => {}, link: 'KYC' },
