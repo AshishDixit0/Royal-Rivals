@@ -1,7 +1,9 @@
 import React from 'react';
-import { View, StyleSheet } from 'react-native';
+import { View, StyleSheet, Text, Image, Dimensions } from 'react-native';
 import CardComponent from './Card';
 import { Colors } from '@/constants/Colors';
+
+const { width, height } = Dimensions.get('window');
 
 const cardsData = [
   { title: 'My Wallet', onPress: () => {}, link: '' },
@@ -11,13 +13,19 @@ const cardsData = [
   { title: 'Settings', onPress: () => {}, link: '' },
 ];
 
-interface navigationProps {
-    navigation: any;
+interface NavigationProps {
+  navigation: any;
 }
 
-const CardsHolderComponent: React.FC<navigationProps> = ({ navigation }) => {
+const CardsHolderComponent: React.FC<NavigationProps> = ({ navigation }) => {
+  const userId = 'BC78XXXXXXX7';
+
   return (
     <View style={styles.container}>
+      <View style={styles.profileContainer}>
+        <Image source={require('../assets/images/userLogo.png')} style={styles.userLogo} />
+        <Text style={styles.userId}>ID-  {userId || 'BC78XXXXXXXXX7'}</Text>
+      </View>
       {cardsData.map((card, index) => (
         <CardComponent key={index} title={card.title} onPress={() => { navigation.navigate(`${card.link}`) }} />
       ))}
@@ -33,6 +41,22 @@ const styles = StyleSheet.create({
     borderTopRightRadius: 20,
     borderTopLeftRadius: 20,
     overflow: 'hidden'
+  },
+  profileContainer: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: height * 0.03,
+  },
+  userLogo: {
+    width: 75,
+    height: 68,
+    borderRadius: 25,
+    marginRight: 10,
+  },
+  userId: {
+    fontSize: 16,
+    color: 'white',
+    fontWeight: '500',
   },
 });
 
