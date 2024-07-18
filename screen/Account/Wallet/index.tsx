@@ -4,7 +4,11 @@ import CardComponent from "@/components/Card";
 import { data } from "../data/WalletData";
 import { styles } from "./styles";
 
-export default function Wallet() {
+interface WalletProps {
+  navigation: any;
+}
+
+export default function Wallet({ navigation }: WalletProps) {
   return (
     <View style={styles.container}>
       <View style={styles.balanceCard}>
@@ -14,7 +18,7 @@ export default function Wallet() {
           <View style={styles.separator} />
           <View style={styles.winningsContainer}>
             <Text style={styles.winningsText}>Winnings: ₹ {data.winning}</Text>
-            <TouchableOpacity style={styles.withdrawButton}>
+            <TouchableOpacity style={styles.withdrawButton} onPress={() => { navigation.navigate('Withdraw') }}>
               <Text style={styles.withdrawButtonText}>Withdraw</Text>
             </TouchableOpacity>
           </View>

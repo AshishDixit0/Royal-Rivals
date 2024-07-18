@@ -14,7 +14,7 @@ const Settings: React.FC = () => {
   };
 
   return (
-    <ScrollView contentContainerStyle={styles.scrollContainer}>
+    <View style={styles.scrollContainer}>
       <View style={styles.container}>
         <Text style={styles.title}>Settings</Text>
         <View style={styles.contentContainer}>
@@ -28,7 +28,7 @@ const Settings: React.FC = () => {
           ))}
         </View>
       </View>
-    </ScrollView>
+    </View>
   );
 };
 

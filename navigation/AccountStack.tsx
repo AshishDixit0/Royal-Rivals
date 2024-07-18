@@ -8,6 +8,7 @@ import AccountScreen from "@/screen/Account";
 import AboutUs from "@/screen/Account/about-us";
 import Settings from "@/screen/Account/settings";
 import Wallet from "@/screen/Account/Wallet";
+import Withdraw from "@/screen/Account/Wallet/withdraw";
 
 const Stack = createNativeStackNavigator<AccountStackParamList>();
 
@@ -59,6 +60,15 @@ const AccountStack = () => {
           })}
           component={Wallet}
           name={"Wallet"}
+        />
+        <Stack.Screen
+          options={({ navigation }) => ({
+            header: () => <AccountHeader navigation={navigation} title="Withdraw" showBarsIcon={false} />,
+            headerTransparent: true,
+            headerTitle: "",
+          })}
+          component={Withdraw}
+          name={"Withdraw"}
         />
       </Stack.Navigator>
     );

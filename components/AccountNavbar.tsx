@@ -20,7 +20,7 @@ export default function AccountNavbar({ navigation, title = 'Account', showBarsI
         </TouchableOpacity>
       )}
       <Text style={[styles.title, showBarsIcon ? styles.titleWithBars : styles.titleWithoutBars]}>{title}</Text>
-      <TouchableOpacity onPress={() => navigation.navigate('Account')} style={styles.iconButton}>
+      <TouchableOpacity onPress={() => navigation.goBack()} style={styles.iconButton}>
         <Icon name="arrow-right" size={width * 0.06} color="white" />
       </TouchableOpacity>
     </View>
