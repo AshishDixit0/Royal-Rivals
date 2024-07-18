@@ -33,10 +33,7 @@ export default function Wallet({ navigation }: WalletProps) {
       </View>
       <CardComponent
         title="Transaction History"
-        onPress={() => {
-          /* Handle navigation */
-          console.log('this is navigation');
-        }}
+        onPress={() => { navigation.navigate('TransactionHistory') }}
       />
     </View>
   );
