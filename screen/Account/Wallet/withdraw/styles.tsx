@@ -26,14 +26,14 @@ export const styles = StyleSheet.create({
     borderLeftWidth: 0.7,
     borderRightWidth: 0.7,
     borderColor: Colors.golden,
-    // backgroundColor: Colors.purpleNavigation,
   },
   balanceTitle: {
     color: "white",
     fontSize: width * 0.05,
     fontWeight: "600",
     textAlign: "center",
-    marginBottom: height * 0.01,
+    height: height * 0.04,
+    marginRight: width * 0.02
   },
   balanceAmount: {
     color: "white",
@@ -46,16 +46,17 @@ export const styles = StyleSheet.create({
     color: "white",
     fontSize: width * 0.045,
     textAlign: "center",
-    marginBottom: height * 0.02,
+    marginBottom: height * 0.05,
   },
   withdrawableText: {
     color: "white",
     fontSize: width * 0.045,
     textAlign: "center",
     marginBottom: height * 0.02,
+    fontWeight: 'bold',
   },
   input: {
-    backgroundColor: Colors.accountsPurplePage,
+    backgroundColor: Colors.purpleNavigation,
     borderRadius: 20,
     padding: width * 0.03,
     color: "white",
@@ -109,5 +110,67 @@ export const styles = StyleSheet.create({
     color: "white",
     fontSize: width * 0.05,
     fontWeight: "600",
+  },
+  modalContainer: {
+    flex: 1,
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+  },
+  modalContent: {
+    width: width * 1.009,
+    padding: 20,
+    borderRadius: 10,
+    backgroundColor: Colors.accountsPurplePage,
+    alignItems: 'center',
+    borderWidth: width * 0.0027,
+    borderColor: Colors.golden,
+    height: '40%'
+  },
+  closeButton: {
+    alignSelf: 'flex-end',
+  },
+  closeButtonText: {
+    color: 'white',
+    fontSize: 24,
+  },
+  modalTitle: {
+    color: 'white',
+    fontSize: 18,
+    fontWeight: 'bold',
+    marginVertical: 10,
+  },
+  modalInput: {
+    width: '100%',
+    backgroundColor: Colors.accountsPurplePage,
+    borderRadius: 10,
+    padding: 10,
+    color: 'white',
+    fontSize: 16,
+    marginVertical: 10,
+    borderBottomColor: Colors.golden,
+    borderBottomWidth: width * 0.0027,
+    paddingBottom: width * 0.02
+  },
+  modalInfo: {
+    color: 'white',
+    fontSize: 14,
+    textAlign: 'center',
+    marginVertical: 10,
+    marginTop: height * 0.03
+  },
+  proceedButton: {
+    backgroundColor: Colors.golden,
+    borderRadius: 20,
+    paddingVertical: 10,
+    paddingHorizontal: 20,
+    marginTop: 10,
+    width: '60%',
+    height: '14%'
+  },
+  proceedButtonText: {
+    color: 'white',
+    fontSize: 16,
+    fontWeight: 'bold',
   },
 });
