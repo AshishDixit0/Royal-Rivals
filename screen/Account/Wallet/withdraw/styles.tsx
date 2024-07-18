@@ -8,7 +8,7 @@ export const styles = StyleSheet.create({
     flex: 1,
     backgroundColor: Colors.accountsPurplePage,
     padding: width * 0.05,
-    paddingTop: height * 0.2, // Adjust paddingTop for responsiveness
+    paddingTop: height * 0.2,
     alignItems: "center",
   },
   balanceCard: {
@@ -26,6 +26,7 @@ export const styles = StyleSheet.create({
     borderLeftWidth: 0.7,
     borderRightWidth: 0.7,
     borderColor: Colors.golden,
+    alignItems: "center",
   },
   balanceTitle: {
     color: "white",
@@ -33,7 +34,7 @@ export const styles = StyleSheet.create({
     fontWeight: "600",
     textAlign: "center",
     height: height * 0.04,
-    marginRight: width * 0.02
+    marginRight: width * 0.02,
   },
   balanceAmount: {
     color: "white",
@@ -53,7 +54,7 @@ export const styles = StyleSheet.create({
     fontSize: width * 0.045,
     textAlign: "center",
     marginBottom: height * 0.02,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   input: {
     backgroundColor: Colors.purpleNavigation,
@@ -63,6 +64,8 @@ export const styles = StyleSheet.create({
     fontSize: width * 0.045,
     textAlign: "center",
     marginBottom: height * 0.01,
+    paddingHorizontal: width * 0.3,
+    paddingVertical: height * 0.01,
   },
   minMaxText: {
     color: "white",
@@ -98,66 +101,66 @@ export const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: width * 0.04,
   },
-  withdrawButton: {
+  linkButton: {
     backgroundColor: Colors.golden,
-    borderRadius: 20,
-    paddingVertical: height * 0.02,
-    paddingHorizontal: width * 0.1,
-    alignSelf: "center",
-    marginTop: height * 0.02,
+    borderRadius: 10,
+    paddingVertical: 5,
+    paddingHorizontal: 40,
+    alignSelf: "flex-start",
+    marginTop: 5,
   },
-  withdrawButtonText: {
+  linkButtonText: {
     color: "white",
-    fontSize: width * 0.05,
+    fontSize: 13,
     fontWeight: "600",
   },
   modalContainer: {
     flex: 1,
-    justifyContent: 'center',
-    alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "rgba(0, 0, 0, 0.5)",
   },
   modalContent: {
     width: width * 1.009,
     padding: 20,
     borderRadius: 10,
     backgroundColor: Colors.accountsPurplePage,
-    alignItems: 'center',
+    alignItems: "center",
     borderWidth: width * 0.0027,
     borderColor: Colors.golden,
-    height: '40%'
+    height: "40%",
   },
   closeButton: {
-    alignSelf: 'flex-end',
+    alignSelf: "flex-end",
   },
   closeButtonText: {
-    color: 'white',
+    color: "white",
     fontSize: 24,
   },
   modalTitle: {
-    color: 'white',
+    color: "white",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginVertical: 10,
   },
   modalInput: {
-    width: '100%',
+    width: "100%",
     backgroundColor: Colors.accountsPurplePage,
     borderRadius: 10,
     padding: 10,
-    color: 'white',
+    color: "white",
     fontSize: 16,
     marginVertical: 10,
     borderBottomColor: Colors.golden,
     borderBottomWidth: width * 0.0027,
-    paddingBottom: width * 0.02
+    paddingBottom: width * 0.02,
   },
   modalInfo: {
-    color: 'white',
+    color: "white",
     fontSize: 14,
-    textAlign: 'center',
+    textAlign: "center",
     marginVertical: 10,
-    marginTop: height * 0.03
+    marginTop: height * 0.03,
   },
   proceedButton: {
     backgroundColor: Colors.golden,
@@ -165,12 +168,20 @@ export const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 20,
     marginTop: 10,
-    width: '60%',
-    height: '14%'
+    width: "60%",
+    height: "14%",
   },
   proceedButtonText: {
-    color: 'white',
+    color: "white",
     fontSize: 16,
-    fontWeight: 'bold',
+    fontWeight: "bold",
+    textAlign: "center",
+  },
+  absolute: {
+    position: "absolute",
+    top: 0,
+    left: 0,
+    bottom: 0,
+    right: 0,
   },
 });
