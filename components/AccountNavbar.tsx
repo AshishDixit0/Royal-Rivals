@@ -21,7 +21,7 @@ export default function AccountNavbar({ navigation, title = 'Account', showBarsI
       )}
       <Text style={[styles.title, showBarsIcon ? styles.titleWithBars : styles.titleWithoutBars]}>{title}</Text>
       <TouchableOpacity onPress={() => navigation.navigate('Account')} style={styles.iconButton}>
-        <Icon name="arrow-right" size={width * 0.06}  color="white" />
+        <Icon name="arrow-right" size={width * 0.06} color="white" />
       </TouchableOpacity>
     </View>
   );
@@ -36,6 +36,11 @@ const styles = StyleSheet.create({
     paddingHorizontal: width * 0.04, // Responsive padding
     backgroundColor: Colors.purpleNavigation, // Replace with your desired background color
     paddingTop: height * 0.05, // Add top padding to move content below the notch
+    shadowColor: '#000', // Add shadow color
+    shadowOffset: { width: 4, height: 4 }, // Add shadow offset
+    shadowOpacity: 0.25, // Add shadow opacity
+    shadowRadius: 4, // Add shadow blur
+    elevation: 5, // Add elevation for Android shadow
   },
   iconButton: {
     padding: width * 0.02, // Responsive padding
@@ -53,6 +58,6 @@ const styles = StyleSheet.create({
   titleWithoutBars: {
     flex: 1,
     paddingLeft: width * 0.03,
-    textAlign: 'left', // Center the text horizontally
+    textAlign: 'left', // Align the text to the left
   },
 });

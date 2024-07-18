@@ -23,9 +23,12 @@ export const Colors = {
     tabIconDefault: '#9BA1A6',
     tabIconSelected: tintColorDark,
   },
-  BACKGROUND_COLOR: '#160120', // login and sign up page background color
+  BACKGROUND_COLOR: '#160120', 
   golden: '#ef9c1f',
   whiteButton: '#fefffe',
   purpleNavigation: '#3c0b44',
   accountsPurplePage: '#160021',
+  cardBackground: '#3c0b44',
+  cardHolderbackground: '#160021',
+  accountBackground: '#4e1e49'
 };

@@ -5,11 +5,11 @@ export type AuthStackParamList = {
 };
 
 export type AccountStackParamList = {
-  AboutUs: undefined;
+  AboutUs: { logoAlignment: 'left' | 'right' | string };
   Details: { logoAlignment: 'left' | 'center' | undefined };
   KYC: undefined;
   Settings: undefined;
   Wallet: undefined;
   TransactionHistory: undefined;
-  Account: undefined;
+  Account:  { navigation: any, title: string, showBarsIcon: boolean | string | any };
 }

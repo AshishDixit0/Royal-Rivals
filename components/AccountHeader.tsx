@@ -16,6 +16,10 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 100,
     backgroundColor: Colors.purpleNavigation, // Match the navbar background color
+    shadowColor: 'black',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.25,
+    shadowRadius: 3.84,
   },
 });
 
