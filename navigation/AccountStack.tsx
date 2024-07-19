@@ -11,6 +11,7 @@ import Wallet from "@/screen/Account/Wallet";
 import Withdraw from "@/screen/Account/Wallet/withdraw";
 import TransactionHistory from "@/screen/Account/Wallet/transaction-history";
 import KYC from "@/screen/Account/KYC";
+import Deposit from "@/screen/Account/Wallet/deposit";
 
 const Stack = createNativeStackNavigator<AccountStackParamList>();
 
@@ -89,6 +90,15 @@ const AccountStack = () => {
           })}
           component={KYC}
           name={"KYC"}
+        />
+        <Stack.Screen
+          options={({ navigation }) => ({
+            header: () => <AccountHeader navigation={navigation} title="Deposit" showBarsIcon={false} />,
+            headerTransparent: true,
+            headerTitle: "",
+          })}
+          component={Deposit}
+          name={"Deposit"}
         />
       </Stack.Navigator>
       
