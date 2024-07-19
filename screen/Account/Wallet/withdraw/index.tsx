@@ -7,6 +7,7 @@ import {
   Modal,
   TouchableOpacity,
   Image,
+  Alert,
 } from "react-native";
 import { BlurView } from "expo-blur";
 import { styles } from "./styles";
@@ -55,6 +56,24 @@ export default function Withdraw() {
     closeModal();
   };
 
+  const handleWithdraw = () => {
+    if (!amount) {
+      Alert.alert("Error", "Please enter an amount");
+      return;
+    }
+
+    if (!isUPISelected && !isBankSelected) {
+      Alert.alert("Error", "Please link a UPI ID or Bank Account");
+      return;
+    }
+
+    // Make the API call to handle withdraw
+    Alert.alert(
+      "Success",
+      `Withdrawn ₹${amount} via ${isUPISelected ? "UPI" : "Bank Account"}`
+    );
+  };
+
   return (
     <View style={styles.container}>
       <View style={styles.balanceCard}>
@@ -73,11 +92,17 @@ export default function Withdraw() {
           style={styles.input}
           placeholder="Enter Amount"
           placeholderTextColor="#999"
-          keyboardType="default"
+          keyboardType="numeric"
           value={amount}
           onChangeText={setAmount}
         />
         <Text style={styles.minMaxText}>Min ₹20 - Max ₹10000</Text>
+        <TouchableOpacity
+          style={styles.withdrawButton}
+          onPress={handleWithdraw}
+        >
+          <Text style={styles.withdrawButtonText}>Withdraw</Text>
+        </TouchableOpacity>
       </View>
       <Text style={styles.withdrawalModesTitle}>Withdrawal Modes</Text>
       <View style={styles.modeContainer}>

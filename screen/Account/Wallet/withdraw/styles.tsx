@@ -27,6 +27,7 @@ export const styles = StyleSheet.create({
     borderRightWidth: 0.7,
     borderColor: Colors.golden,
     alignItems: "center",
+    marginBottom: height * 0.03,
   },
   balanceTitle: {
     color: "white",
@@ -72,6 +73,18 @@ export const styles = StyleSheet.create({
     fontSize: width * 0.035,
     textAlign: "center",
     marginBottom: height * 0.02,
+  },
+  withdrawButton: {
+    backgroundColor: Colors.golden,
+    borderRadius: 20,
+    paddingVertical: height * 0.01,
+    alignItems: "center",
+    width: "50%",
+  },
+  withdrawButtonText: {
+    color: "white",
+    fontSize: width * 0.045,
+    fontWeight: "bold",
   },
   withdrawalModesTitle: {
     color: "white",
