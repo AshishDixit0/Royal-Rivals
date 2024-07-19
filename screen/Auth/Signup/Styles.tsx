@@ -12,12 +12,13 @@ export const styles = StyleSheet.create({
       paddingHorizontal: 20,
     },
     appLogo: {
-      width: width * 0.5,
-      height: width * 0.5,
+      width: width* 0.3,
+      height: width*0.3,
       marginBottom: 20,
     },
     logoContainer: {
-      marginBottom: 20,
+      // marginBottom: 20,
+      flex:1
     },
     logoText: {
       fontSize: 30,

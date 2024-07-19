@@ -26,7 +26,7 @@ export default function SignUp({ navigation, route}: { route: any, navigation: a
   const handleSignUp = async() => {
     if (validateForm()) {
       await AsyncStorage.setItem("phoneNumber", mobileNumber);
-      navigation.navigate('OTP', { phone: mobileNumber });
+      navigation.navigate('Gamescreen', { phone: mobileNumber });
     }
   };
 

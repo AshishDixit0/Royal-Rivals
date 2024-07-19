@@ -2,6 +2,8 @@ export type AuthStackParamList = {
   LoginScreen: undefined;
   SignUp: undefined;
   OTP: undefined;
+  Gamescreen: undefined;
+  GameSelectScreen:undefined;
 };
 
 export type AccountStackParamList = {
