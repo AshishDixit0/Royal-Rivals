@@ -6,6 +6,7 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
+  Alert
 } from "react-native";
 import { Colors } from "@/constants/Colors";
 
@@ -29,10 +30,10 @@ export default function Step1({
   const [postal, setPostal] = useState(formData.postal);
 
   const handleNext = () => {
-    // if (!firstName || !lastName || !dob || !state || !address || !postal) {
-    //   Alert.alert('Error', 'Please fill all fields');
-    //   return;
-    // }
+    if (!firstName || !lastName || !dob || !state || !address || !postal) {
+      Alert.alert('Error', 'Please fill all fields');
+      return;
+    }
     onNext({ firstName, lastName, dob, state, address, postal });
   };
 
