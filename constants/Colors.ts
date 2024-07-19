@@ -26,15 +26,8 @@ export const Colors = {
   BACKGROUND_COLOR: '#160120', 
   golden: '#ef9c1f',
   whiteButton: '#fefffe',
-<<<<<<< Updated upstream
-  purpleNavigation: '#3c0b44',
-  accountsPurplePage: '#160021',
-  cardBackground: '#3c0b44',
-  cardHolderbackground: '#160021',
-  accountBackground: '#4e1e49',
-  checkboxBorder: '#EF9D1F'
-=======
+    header_Color:"#3C0A45",
+  home_bg:"#4e1e49"
   header_Color:"#3C0A45",
   home_bg:"#4e1e49"
->>>>>>> Stashed changes
 };

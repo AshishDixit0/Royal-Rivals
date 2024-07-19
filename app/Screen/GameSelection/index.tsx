@@ -9,14 +9,14 @@ import LogotextSnake from '../../../assets/images/logotext2.png';
 
 const { width } = Dimensions.get('window');
 
-export default function GameSelectScreen({ navigation, route }) {
+export default function GameSelectScreen({ navigation, route }:any) {
   const [bannerImage, setBannerImage] = useState(LogotextLudo);
   const ludoScaleAnim = useRef(new Animated.Value(1)).current;
   const snakeScaleAnim = useRef(new Animated.Value(1)).current;
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setBannerImage(prevImage => 
+      setBannerImage((prevImage:any) => 
         prevImage === LogotextLudo ? LogotextSnake : LogotextLudo
       );
     }, 3000);
@@ -24,14 +24,14 @@ export default function GameSelectScreen({ navigation, route }) {
     return () => clearInterval(interval);
   }, []);
 
-  const handlePressIn = (scaleAnim) => {
+  const handlePressIn = (scaleAnim:any) => {
     Animated.spring(scaleAnim, {
       toValue: 1.2,
       useNativeDriver: true,
     }).start();
   };
 
-  const handlePressOut = (scaleAnim) => {
+  const handlePressOut = (scaleAnim:any) => {
     Animated.spring(scaleAnim, {
       toValue: 1,
       useNativeDriver: true,
