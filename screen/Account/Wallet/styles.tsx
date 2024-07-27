@@ -10,7 +10,7 @@ export const styles = StyleSheet.create({
     padding: width * 0.05,
     alignItems: "center",
     justifyContent: "center",
-    paddingBottom: height * 0.2,
+    paddingBottom: height * 0.1,
   },
   balanceCard: {
     width: "113%",

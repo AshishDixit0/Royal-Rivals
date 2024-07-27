@@ -3,28 +3,17 @@ import {
   View,
   Text,
   TextInput,
-  Switch,
-  Modal,
   TouchableOpacity,
-  Image,
+  Modal,
   Alert,
 } from "react-native";
 import { BlurView } from "expo-blur";
-import { styles } from "./styles";
-import { withdrawData } from "../../data/WithdrawData";
+import { styles } from "./styles"; // assuming you have a styles.js file for styles
 
-export default function Withdraw() {
+export default function Deposit() {
   const [amount, setAmount] = useState("");
-  const [isUPISelected, setIsUPISelected] = useState(
-    withdrawData.find((item) => item.type === "UPI" && item.status)
-      ? true
-      : false
-  );
-  const [isBankSelected, setIsBankSelected] = useState(
-    withdrawData.find((item) => item.type === "Bank" && item.status)
-      ? true
-      : false
-  );
+  const [isUPISelected, setIsUPISelected] = useState(false);
+  const [isBankSelected, setIsBankSelected] = useState(false);
   const [modalVisible, setModalVisible] = useState(false);
   const [modalType, setModalType] = useState("");
   const [upiId, setUpiId] = useState("");
@@ -43,22 +32,30 @@ export default function Withdraw() {
     if (modalType === "UPI") {
       if (upiId) {
         setIsUPISelected(true);
-        withdrawData[0].linked = upiId;
-        withdrawData[0].status = true;
+        // update your data accordingly
       }
     } else {
       if (bankAccount) {
         setIsBankSelected(true);
-        withdrawData[1].linked = bankAccount;
-        withdrawData[1].status = true;
+        // update your data accordingly
       }
     }
     closeModal();
   };
 
-  const handleWithdraw = () => {
+  const handleDeposit = () => {
     if (!amount) {
       Alert.alert("Error", "Please enter an amount");
+      return;
+    }
+
+    if (Number(amount) < 100) {
+      Alert.alert("Min amout is 100");
+      return;
+    }
+
+    if (Number(amount) > 10000) {
+      Alert.alert("Max amout is 10000");
       return;
     }
 
@@ -67,27 +64,36 @@ export default function Withdraw() {
       return;
     }
 
-    // Make the API call to handle withdraw
+    // Make the API call to handle deposit
     Alert.alert(
       "Success",
-      `Withdrawn ₹${amount} via ${isUPISelected ? "UPI" : "Bank Account"}`
+      `Deposited ₹${amount} via ${isUPISelected ? "UPI" : "Bank Account"}`
     );
   };
 
   return (
     <View style={styles.container}>
-      <View style={styles.balanceCard}>
-        <Text style={styles.balanceAmount}>
-          <Image
-            source={require("@/assets/images/walletLogo.png")}
-            style={styles.balanceTitle}
-          />{" "}
-          ₹ 10000
-        </Text>
-        <Text style={styles.winningsText}>Winnings: ₹ 6000</Text>
-        <Text style={styles.withdrawableText}>
-          Available for withdrawal: ₹ 6000
-        </Text>
+      <View style={styles.depositCard}>
+        <View style={styles.amountButtons}>
+          <TouchableOpacity
+            style={styles.amountButton}
+            onPress={() => setAmount("100")}
+          >
+            <Text style={styles.amountButtonText}>₹ 100</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.amountButton}
+            onPress={() => setAmount("200")}
+          >
+            <Text style={styles.amountButtonText}>₹ 200</Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={styles.amountButton}
+            onPress={() => setAmount("500")}
+          >
+            <Text style={styles.amountButtonText}>₹ 500</Text>
+          </TouchableOpacity>
+        </View>
         <TextInput
           style={styles.input}
           placeholder="Enter Amount"
@@ -96,22 +102,18 @@ export default function Withdraw() {
           value={amount}
           onChangeText={setAmount}
         />
-        <Text style={styles.minMaxText}>Min ₹20 - Max ₹10000</Text>
-        <TouchableOpacity
-          style={styles.withdrawButton}
-          onPress={handleWithdraw}
-        >
-          <Text style={styles.withdrawButtonText}>Withdraw</Text>
+        <Text style={styles.minMaxText}>Min ₹100 - Max ₹10000</Text>
+        <TouchableOpacity style={styles.depositButton} onPress={handleDeposit}>
+          <Text style={styles.depositButtonText}>Deposit</Text>
         </TouchableOpacity>
       </View>
-      <Text style={styles.withdrawalModesTitle}>Withdrawal Modes</Text>
+      <Text style={styles.depositModesTitle}>Deposit Modes</Text>
       <View style={styles.modeContainer}>
         <View style={styles.modeTextContainer}>
-          <Text style={styles.modeText}>UPI ID linked</Text>
-          {isUPISelected && (
-            <Text style={styles.linkedValue}>{withdrawData[0].linked}</Text>
-          )}
-          {!isUPISelected && (
+          <Text style={styles.modeText}>UPI ID</Text>
+          {isUPISelected ? (
+            <Text style={styles.linkedValue}>Linked: {upiId}</Text>
+          ) : (
             <TouchableOpacity
               style={styles.linkButton}
               onPress={() => handleModal("UPI")}
@@ -120,18 +122,13 @@ export default function Withdraw() {
             </TouchableOpacity>
           )}
         </View>
-        <Switch
-          value={isUPISelected}
-          onValueChange={() => handleModal("UPI")}
-        />
       </View>
       <View style={styles.modeContainer}>
         <View style={styles.modeTextContainer}>
-          <Text style={styles.modeText}>Bank account Linked</Text>
-          {isBankSelected && (
-            <Text style={styles.linkedValue}>{withdrawData[1].linked}</Text>
-          )}
-          {!isBankSelected && (
+          <Text style={styles.modeText}>Bank Account</Text>
+          {isBankSelected ? (
+            <Text style={styles.linkedValue}>Linked: {bankAccount}</Text>
+          ) : (
             <TouchableOpacity
               style={styles.linkButton}
               onPress={() => handleModal("Bank")}
@@ -140,10 +137,6 @@ export default function Withdraw() {
             </TouchableOpacity>
           )}
         </View>
-        <Switch
-          value={isBankSelected}
-          onValueChange={() => handleModal("Bank")}
-        />
       </View>
 
       <Modal

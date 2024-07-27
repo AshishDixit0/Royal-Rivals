@@ -18,7 +18,12 @@ export default function Wallet({ navigation }: WalletProps) {
           <View style={styles.separator} />
           <View style={styles.winningsContainer}>
             <Text style={styles.winningsText}>Winnings: ₹ {data.winning}</Text>
-            <TouchableOpacity style={styles.withdrawButton} onPress={() => { navigation.navigate('Withdraw') }}>
+            <TouchableOpacity
+              style={styles.withdrawButton}
+              onPress={() => {
+                navigation.navigate("Withdraw");
+              }}
+            >
               <Text style={styles.withdrawButtonText}>Withdraw</Text>
             </TouchableOpacity>
           </View>
@@ -32,8 +37,16 @@ export default function Wallet({ navigation }: WalletProps) {
         </View>
       </View>
       <CardComponent
+        title="Deposit"
+        onPress={() => {
+          navigation.navigate("Deposit");
+        }}
+      />
+      <CardComponent
         title="Transaction History"
-        onPress={() => { navigation.navigate('TransactionHistory') }}
+        onPress={() => {
+          navigation.navigate("TransactionHistory");
+        }}
       />
     </View>
   );

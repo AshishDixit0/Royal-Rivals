@@ -15,4 +15,5 @@ export type AccountStackParamList = {
   TransactionHistory: undefined;
   Account:  { navigation: any, title: string, showBarsIcon: boolean | string | any };
   Withdraw: undefined;
+  Deposit: undefined;
 }
