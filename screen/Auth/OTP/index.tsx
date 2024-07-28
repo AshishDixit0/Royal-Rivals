@@ -3,18 +3,19 @@ import { View, Text, TouchableOpacity, Alert, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome";
 import KeypadButton from "../../../components/Button/KeypadButtons";
-import AppLogo from "../../../assets/images/appLogo.png";
 import { styles } from "./Styles";
 import Button from "@/components/Button/Button";
 import { Colors } from "@/constants/Colors";
+import { login } from "@/services/AuthAPI";
+import { setToken } from "@/services/API";
 
-export default function OTP({
-  route,
-  navigation,
-}: {
+interface OTPProps {
   route: any;
   navigation: any;
-}) {
+}
+
+export default function OTPPage({ route, navigation }: OTPProps) {
+
   const [otp, setOtp] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(route.params?.phone);
 
@@ -23,12 +24,9 @@ export default function OTP({
     const getPhoneNumber = async () => {
       try {
         const storedPhoneNumber = await AsyncStorage.getItem("phoneNumber");
-        console.log("this has been attained: ", storePhoneNumber);
 
         if (storedPhoneNumber) {
           setPhoneNumber(storedPhoneNumber);
-        } else {
-          setPhoneNumber("998XXXXXX9");
         }
       } catch (error) {
         console.error("Failed to load phone number:", error);
@@ -46,19 +44,28 @@ export default function OTP({
     }
   };
 
-  const handleContinue = () => {
+  const handleContinue = async () => {
     if (validateForm()) {
-      // Handle OTP verification logic here
-      Alert.alert("Success", "OTP verified successfully!");
-      // Store the phone number
-      storePhoneNumber("78XXXXXXXX7");
+      try {
+        const loginData = await login({ phone: phoneNumber, otp });
+        console.log('this is the login data: ', loginData);
+
+        await setToken(loginData.data.token);
+
+        Alert.alert('OTP verified!')
+        // navigation.navigate('Home');
+      } catch (error) {
+        console.log('this is the error: ', error);
+
+        Alert.alert('Wrong OTP');
+      }
     }
   };
 
   const validateForm = () => {
     const otpPattern = /^[0-9]{6}$/;
     if (!otpPattern.test(otp)) {
-      Alert.alert("Error", "Please enter a valid 6-digit OTP.");
+      Alert.alert('Enter a valid OTP');
       return false;
     }
     return true;
@@ -90,7 +97,7 @@ export default function OTP({
 
   return (
     <View style={styles.container}>
-      <Image source={AppLogo} style={styles.appLogo} />
+      <Image source={require('@/assets/images/appLogo.png')} style={styles.appLogo} />
       <Text style={styles.title}>Enter OTP</Text>
       <Text style={styles.subtitle}>Enter OTP sent to {phoneNumber}</Text>
       <View style={styles.otpContainer}>
