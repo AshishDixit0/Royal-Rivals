@@ -53,7 +53,7 @@ export default function OTPPage({ route, navigation }: OTPProps) {
         await setToken(loginData.data.token);
 
         Alert.alert('OTP verified!')
-        // navigation.navigate('Home');
+        navigation.navigate('Home');
       } catch (error) {
         console.log('this is the error: ', error);
 
