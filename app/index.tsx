@@ -1,17 +1,15 @@
-import AuthStack from "@/navigation/AuthStack";
-import AccountStack from "@/navigation/AccountStack";
-import { QueryClient, QueryClientProvider } from 'react-query';
-import { Provider } from 'react-redux';
+import { QueryClient, QueryClientProvider } from "react-query";
+import { Provider } from "react-redux";
 import { store } from "@/store";
+import AuthNavigator from "@/navigation";
 
-const queryClient = new QueryClient()
+const queryClient = new QueryClient();
 
 export default function HomeScreen() {
-  // get auth token
   return (
     <Provider store={store}>
-      <QueryClientProvider client={queryClient}> 
-        <AuthStack />
+      <QueryClientProvider client={queryClient}>
+        <AuthNavigator />
       </QueryClientProvider>
     </Provider>
   );

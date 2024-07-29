@@ -2,8 +2,6 @@ export type AuthStackParamList = {
   LoginScreen: undefined;
   SignUp: undefined;
   OTP: undefined;
-  Gamescreen: undefined;
-  GameSelectScreen:undefined;
 };
 
 export type AccountStackParamList = {
@@ -16,4 +14,6 @@ export type AccountStackParamList = {
   Account:  { navigation: any, title: string, showBarsIcon: boolean | string | any };
   Withdraw: undefined;
   Deposit: undefined;
+  Home: undefined;
+  GameSelect:undefined;
 }
