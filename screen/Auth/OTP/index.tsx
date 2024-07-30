@@ -1,13 +1,18 @@
+// src/screens/Auth/OTPPage.tsx
+
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Icon from "react-native-vector-icons/FontAwesome";
+import { useDispatch } from 'react-redux';
+import { AppDispatch } from "@/store";
 import KeypadButton from "../../../components/Button/KeypadButtons";
 import { styles } from "./Styles";
 import Button from "@/components/Button/Button";
 import { Colors } from "@/constants/Colors";
 import { login } from "@/services/AuthAPI";
 import { setToken } from "@/services/API";
+import { checkToken } from "@/store/AuthSlice";
 
 interface OTPProps {
   route: any;
@@ -15,7 +20,7 @@ interface OTPProps {
 }
 
 export default function OTPPage({ route, navigation }: OTPProps) {
-
+  const dispatch = useDispatch<AppDispatch>();
   const [otp, setOtp] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(route.params?.phone);
 
@@ -48,15 +53,11 @@ export default function OTPPage({ route, navigation }: OTPProps) {
     if (validateForm()) {
       try {
         const loginData = await login({ phone: phoneNumber, otp });
-        console.log('this is the login data: ', loginData);
-
         await setToken(loginData.data.token);
-
-        Alert.alert('OTP verified!')
-        navigation.navigate('Home');
+        Alert.alert('OTP verified!');
+        dispatch(checkToken());
+        navigation.navigate('AccountStack');
       } catch (error) {
-        console.log('this is the error: ', error);
-
         Alert.alert('Wrong OTP');
       }
     }
@@ -87,13 +88,6 @@ export default function OTPPage({ route, navigation }: OTPProps) {
     Alert.alert("Resend OTP", "OTP has been resent.");
   };
 
-  const storePhoneNumber = async (phoneNumber: string) => {
-    try {
-      await AsyncStorage.setItem("phoneNumber", phoneNumber);
-    } catch (error) {
-      console.error("Failed to save phone number:", error);
-    }
-  };
 
   return (
     <View style={styles.container}>

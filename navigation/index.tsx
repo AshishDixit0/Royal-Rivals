@@ -1,27 +1,22 @@
-import React, { useEffect, useState } from "react";
+// src/navigation/AuthNavigator.tsx
+
+import React, { useEffect } from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
+import { useDispatch, useSelector } from 'react-redux';
+import { checkToken } from "@/store/AuthSlice";
+import { RootState, AppDispatch } from "@/store";  // Import RootState and AppDispatch
 import AuthStack from "./AuthStack";
 import AccountStack from "./AccountStack";
-import { getToken } from "@/services/API"; // Make sure to import the right path
 
 const Stack = createNativeStackNavigator();
 
 const AuthNavigator = () => {
-  const [isAuthenticated, setIsAuthenticated] = useState<boolean | null>(null);
+  const dispatch = useDispatch<AppDispatch>();  // Use AppDispatch type
+  const isAuthenticated = useSelector((state: RootState) => state.auth.isAuthenticated);
 
   useEffect(() => {
-    getToken()
-      .then(token => {
-        if (token) {
-          setIsAuthenticated(true);
-        } else {
-          setIsAuthenticated(false);
-        }
-      })
-      .catch(() => {
-        setIsAuthenticated(false);
-      });
-  }, []);
+    dispatch(checkToken());
+  }, [dispatch]);
 
   if (isAuthenticated === null) {
     // Optionally, you can show a loading screen while checking authentication
