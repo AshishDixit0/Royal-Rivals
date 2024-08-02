@@ -1,9 +1,16 @@
 import axios from "axios";
+import { BACKEND_URL } from "@/config";
 
 export const generateOtp = (data: any) => {
-    return axios.post("https://4c85-2401-4900-560a-adbe-bd80-5a31-1490-2662.ngrok-free.app/otp", data);
+    console.log('this is the url: ', BACKEND_URL);
+    
+    return axios.post(`${BACKEND_URL}/otp`, data);
 }
 
-export const login = (data: any) => {
-    return axios.post("https://4c85-2401-4900-560a-adbe-bd80-5a31-1490-2662.ngrok-free.app/login", data);
+export const loginAPI = (data: any) => {
+    return axios.post(`${BACKEND_URL}/login`, data);
+}
+
+export const logoutAPI = () => {
+    return axios.post(`${BACKEND_URL}/logout`);
 }

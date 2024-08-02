@@ -1,8 +1,11 @@
 import axios from "axios";
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { BACKEND_URL } from "@/config";
+
+export let authToken: string;
 
 const API = axios.create({
-    baseURL: "https://4c85-2401-4900-560a-adbe-bd80-5a31-1490-2662.ngrok-free.app",
+    baseURL: BACKEND_URL,
     timeout: 10000,
     headers: {
         common: {
@@ -12,10 +15,23 @@ const API = axios.create({
 });
 
 export const setToken = async (token: string) => {
-    console.log('this is the tooken: ', token);
-    
     API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+    authToken = token;
     await AsyncStorage.setItem('token', token);
+}
+
+export const getToken = () => {
+    return AsyncStorage.getItem('token')
+        .then(token => {
+            if (token) {
+                API.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+            }
+            return token;
+        })
+        .catch(error => {
+            console.error('Error getting token from AsyncStorage:', error);
+            return null;  
+        });
 }
 
 API.interceptors.request.use(function (request) {

@@ -1,15 +1,17 @@
 // components/HomeScreen.js
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '@/constants/Colors';
 import AppLogo from "../../assets/images/appLogo.png";
 import WalletLogo from "../../assets/images/wallet.png"
 
 const { width } = Dimensions.get('window');
 
+interface GameHeaderProps {
+  navigation?: any;
+}
 
-export default function GameHeader() {
+export default function GameHeader({ navigation }: GameHeaderProps) {
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -28,7 +30,7 @@ export default function GameHeader() {
             />
           </TouchableOpacity>
         </View>
-        <TouchableOpacity style={styles.menuButton}>
+        <TouchableOpacity style={styles.menuButton} onPress={() => { navigation.navigate('Account') }}>
           <View style={styles.menuIcon} />
           <View style={styles.menuIcon} />
           <View style={styles.menuIcon} />
