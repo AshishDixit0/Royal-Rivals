@@ -10,7 +10,7 @@ import KeypadButton from "../../../components/Button/KeypadButtons";
 import { styles } from "./Styles";
 import Button from "@/components/Button/Button";
 import { Colors } from "@/constants/Colors";
-import { login } from "@/services/AuthAPI";
+import { login } from "@/store/AuthSlice";
 import { setToken } from "@/services/API";
 import { checkToken } from "@/store/AuthSlice";
 
@@ -20,7 +20,7 @@ interface OTPProps {
 }
 
 export default function OTPPage({ route, navigation }: OTPProps) {
-  const dispatch = useDispatch<AppDispatch>();
+  const dispatch = useDispatch<AppDispatch | any>();
   const [otp, setOtp] = useState("");
   const [phoneNumber, setPhoneNumber] = useState(route.params?.phone);
 
@@ -52,12 +52,13 @@ export default function OTPPage({ route, navigation }: OTPProps) {
   const handleContinue = async () => {
     if (validateForm()) {
       try {
-        const loginData = await login({ phone: phoneNumber, otp });
-        await setToken(loginData.data.token);
+        await dispatch(login({ phone: phoneNumber, otp }))
         Alert.alert('OTP verified!');
         dispatch(checkToken());
         navigation.navigate('AccountStack');
       } catch (error) {
+        console.log('this is the error: ', error);
+        
         Alert.alert('Wrong OTP');
       }
     }

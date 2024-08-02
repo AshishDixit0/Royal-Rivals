@@ -17,7 +17,8 @@ const AuthNavigator = () => {
   useEffect(() => {
     dispatch(checkToken());
   }, [dispatch]);
-
+  console.log('this is the auth: ', isAuthenticated);
+  
   if (isAuthenticated === null) {
     // Optionally, you can show a loading screen while checking authentication
     return null;

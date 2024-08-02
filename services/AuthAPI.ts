@@ -7,6 +7,10 @@ export const generateOtp = (data: any) => {
     return axios.post(`${BACKEND_URL}/otp`, data);
 }
 
-export const login = (data: any) => {
+export const loginAPI = (data: any) => {
     return axios.post(`${BACKEND_URL}/login`, data);
+}
+
+export const logoutAPI = () => {
+    return axios.post(`${BACKEND_URL}/logout`);
 }
