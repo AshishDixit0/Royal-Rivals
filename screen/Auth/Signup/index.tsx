@@ -11,6 +11,7 @@ import KeypadButton from "../../../components/Button/KeypadButtons";
 import { styles } from "./Styles";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import Button from "@/components/Button/Button";
+import { generateOtp } from "@/services/AuthAPI";
 
 export default function SignUp({ navigation, route}: { route: any, navigation: any }) {
   const [mobileNumber, setMobileNumber] = useState("");
@@ -25,8 +26,9 @@ export default function SignUp({ navigation, route}: { route: any, navigation: a
 
   const handleSignUp = async() => {
     if (validateForm()) {
+      await generateOtp({phone: mobileNumber});
       await AsyncStorage.setItem("phoneNumber", mobileNumber);
-      navigation.navigate('Gamescreen', { phone: mobileNumber });
+      navigation.navigate('OTP', { phone: mobileNumber });
     }
   };
 
