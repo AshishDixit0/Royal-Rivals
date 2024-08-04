@@ -1,5 +1,3 @@
-// src/screens/Auth/OTPPage.tsx
-
 import React, { useState, useEffect } from "react";
 import { View, Text, TouchableOpacity, Alert, Image } from "react-native";
 import AsyncStorage from "@react-native-async-storage/async-storage";
@@ -10,8 +8,8 @@ import KeypadButton from "../../../components/Button/KeypadButtons";
 import { styles } from "./Styles";
 import Button from "@/components/Button/Button";
 import { Colors } from "@/constants/Colors";
-import { login } from "@/store/AuthSlice";
-import { setToken } from "@/services/API";
+import { signup } from "@/store/AuthSlice";
+import { setToken, getToken } from "@/services/API";
 import { checkToken } from "@/store/AuthSlice";
 
 interface OTPProps {
@@ -25,20 +23,20 @@ export default function OTPPage({ route, navigation }: OTPProps) {
   const [phoneNumber, setPhoneNumber] = useState(route.params?.phone);
 
   useEffect(() => {
-    // Retrieve the stored phone number when the component mounts
-    const getPhoneNumber = async () => {
+    // Retrieve the stored phone number and token when the component mounts
+    const initialize = async () => {
       try {
         const storedPhoneNumber = await AsyncStorage.getItem("phoneNumber");
-
+        const token = await getToken(); // This ensures the token is set
         if (storedPhoneNumber) {
           setPhoneNumber(storedPhoneNumber);
         }
       } catch (error) {
-        console.error("Failed to load phone number:", error);
+        console.error("Failed to initialize data:", error);
       }
     };
 
-    getPhoneNumber();
+    initialize();
   }, []);
 
   const handleKeyPress = (value: string) => {
@@ -52,13 +50,16 @@ export default function OTPPage({ route, navigation }: OTPProps) {
   const handleContinue = async () => {
     if (validateForm()) {
       try {
-        await dispatch(login({ phone: phoneNumber, otp }))
-        Alert.alert('OTP verified!');
-        dispatch(checkToken());
-        navigation.navigate('AccountStack');
-      } catch (error) {
-        console.log('this is the error: ', error);
+        const response = await dispatch(signup({ phone: phoneNumber, otp }));
+        console.log('this is the token: ', response.payload.data.token);
+        await setToken();
         
+        if (response.payload.data.token) {
+          Alert.alert('OTP verified!');
+          navigation.navigate('AccountStack');
+        }
+      } catch (error) {
+        console.error('Error during OTP verification:', error);
         Alert.alert('Wrong OTP');
       }
     }
@@ -88,7 +89,6 @@ export default function OTPPage({ route, navigation }: OTPProps) {
   const handleResendOtp = () => {
     Alert.alert("Resend OTP", "OTP has been resent.");
   };
-
 
   return (
     <View style={styles.container}>

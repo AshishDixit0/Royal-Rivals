@@ -2,15 +2,9 @@
 
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import { getToken } from '@/services/API';
-import { logoutAPI, loginAPI } from '@/services/AuthAPI';
-import { setToken } from '@/services/API';
+import { logoutAPI, loginAPI, signupAPI } from '@/services/AuthAPI';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-
-interface AuthState {
-  isAuthenticated: boolean | null;
-  user: any | null;
-  token: string | null;
-}
+import { AuthState } from '@/interface/auth.interface';
 
 const initialState: AuthState = {
   isAuthenticated: null,
@@ -24,16 +18,15 @@ export const checkToken = createAsyncThunk('auth/checkToken', async () => {
 });
 
 export const logout = createAsyncThunk('auth/logout', async () => {
-  const userData = await logoutAPI();
-  console.log('this is the logout: ', userData);  
-
-  return ;
+  await logoutAPI();
+  await AsyncStorage.removeItem('token');
+  await getToken();
 })
 
-export const login = createAsyncThunk('auth/login', async (data: any) => {
-  const userData = await loginAPI(data);
-  await setToken(userData.data.token);
-  await AsyncStorage.setItem('token', userData.data.token);
+export const signup = createAsyncThunk('auth/login', async (data: any) => {
+  const userData = await signupAPI(data);
+  await AsyncStorage.setItem('token', userData?.data?.token);
+  await getToken();
   
   return userData;
 })
@@ -49,14 +42,20 @@ const authSlice = createSlice({
     builder.addCase(checkToken.rejected, (state) => {
       state.isAuthenticated = false;
     });
-    builder.addCase(login.fulfilled, (state, action) => {
-      console.log('this is the builder: ', action.payload.data);
+    builder.addCase(signup.fulfilled, (state, action) => {
+      console.log('this is the action: ', action.payload.data);
       
-      state.token = action?.payload?.data?.data.token
-      state.user = action.payload.data?.data.user
+      state.token = action?.payload?.data?.token
+      state.user = action.payload.data?.user
+      state.isAuthenticated = true;
     })
-    builder.addCase(login.rejected, (state, action) => {
+    builder.addCase(signup.rejected, (state, action) => {
       console.log('this is the error: ', action.payload);      
+    })
+    builder.addCase(logout.fulfilled, (state) => {
+      state.isAuthenticated = false;
+      state.user = '';
+      state.token = '';
     })
   },
 });
