@@ -4,29 +4,26 @@ import {
   Text,
   Animated,
   Image,
-  StyleSheet,
   Dimensions,
   TouchableWithoutFeedback,
 } from "react-native";
-import { SafeAreaView } from "react-native-safe-area-context";
-import { Colors } from "@/constants/Colors";
-import AppLogo from "../../../assets/images/appLogo.png";
-import WalletLogo from "../../../assets/images/wallet.png";
-import Ludo from "../../../assets/images/ludo.png";
-import Snake from "../../../assets/images/snake.png";
-import GameHeader from "@/components/GameHeader/GameHeader";
-import LogotextLudo from "../../../assets/images/logotext1.png";
-import LogotextSnake from "../../../assets/images/logotext2.png";
-import Bg from "../../../assets/images/bg.png";
-import Footer from "@/components/Footer";
-import AsyncStorage from "@react-native-async-storage/async-storage";
 import { useDispatch } from "react-redux";
-import { logout } from "@/store/AuthSlice";
+import { styles } from "./styles";
+
+const data = {
+  AppLogo: require("@/assets/images/appLogo.png"),
+  WalletLogo: require("@/assets/images/wallet.png"),
+  Ludo: require("@/assets/images/ludo.png"),
+  Snake: require("@/assets/images/snake.png"),
+  LogotextLudo: require("@/assets/images/logotext1.png"),
+  LogotextSnake: require("@/assets/images/logotext2.png"),
+  Bg: require("@/assets/images/bg.png"),
+};
 
 const { width, height } = Dimensions.get("window");
 
 export default function HomeScreen({ navigation }: { navigation: any }) {
-  const [bannerImage, setBannerImage] = useState(LogotextLudo);
+  const [bannerImage, setBannerImage] = useState(data.LogotextLudo);
   const dispatch = useDispatch()<any>;
 
   const ludoScaleAnim = useRef(new Animated.Value(1)).current;
@@ -35,7 +32,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   useEffect(() => {
     const interval = setInterval(() => {
       setBannerImage((prevImage: any) =>
-        prevImage === LogotextLudo ? LogotextSnake : LogotextLudo
+        prevImage === data.LogotextLudo ? data.LogotextSnake : data.LogotextLudo
       );
     }, 3000);
 
@@ -57,9 +54,6 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
   };
 
   const handleNav = async () => {
-    await AsyncStorage.removeItem('token');
-    await dispatch(logout());
-    console.log('this is the calling');
     navigation.navigate("GameSelect");
   };
 
@@ -77,14 +71,15 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
               onPress={handleNav}
             >
               <View>
-                <Image source={Bg} style={styles.bg} />
+                <Image source={data.Bg} style={styles.bg} />
                 <Animated.Image
-                  source={Ludo}
+                  source={data.Ludo}
                   style={[
                     styles.Ludo,
                     { transform: [{ scale: ludoScaleAnim }] },
                   ]}
                 />
+                <Text style={styles.gameText}>Ludo Supreme</Text>
               </View>
             </TouchableWithoutFeedback>
             <TouchableWithoutFeedback
@@ -93,69 +88,20 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
               onPress={handleNav}
             >
               <View>
-                <Image source={Bg} style={styles.bg} />
+                <Image source={data.Bg} style={styles.bg} />
                 <Animated.Image
-                  source={Snake}
+                  source={data.Snake}
                   style={[
                     styles.Snake,
                     { transform: [{ scale: snakeScaleAnim }] },
                   ]}
                 />
+                <Text style={styles.gameText}>Snakes & Ladder</Text>
               </View>
             </TouchableWithoutFeedback>
           </View>
         </View>
       </View>
-      <Footer navigation={navigation} currentScreen="HomeScreen" />
     </View>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.home_bg,
-  },
-  innercontainer: {
-    display: "flex",
-    flexDirection: "column",
-    marginTop: height * 0.13,
-  },
-  homebox: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "space-between",
-  },
-  banner: {
-    height: 270,
-    width: 393,
-    backgroundColor: Colors.BACKGROUND_COLOR,
-  },
-  logotext: {
-    height: 225,
-    width: 300,
-    top: 18,
-    left: 24,
-  },
-  games: {
-    marginTop: height * 0.1,
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-evenly",
-  },
-  bg: {
-    width: 150,
-    height: 141,
-  },
-  Ludo: {
-    top: -160,
-    left: -20,
-    width: 190,
-    height: 181,
-  },
-  Snake: {
-    top: -160,
-    width: 146,
-    height: 160,
-  },
-});
