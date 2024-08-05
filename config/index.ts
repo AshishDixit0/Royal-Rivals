@@ -1,4 +1,4 @@
-export const BACKEND_URL = "https://e6fc-2401-4900-5308-ae89-11f0-68f8-c3f5-82b7.ngrok-free.app" || process.env.BACKEND_URL;
+export const BACKEND_URL = "https://6b6a-2401-4900-52f0-11df-315a-95d8-aab8-93fb.ngrok-free.app" || process.env.BACKEND_URL;
 
 
 
