@@ -1,16 +1,19 @@
-import axios from "axios";
-import { BACKEND_URL } from "@/config";
+import API from "./API";
+import { UnauthenticatedAPI } from "./API";
+import { authToken } from "./API";
 
 export const generateOtp = (data: any) => {
-    console.log('this is the url: ', BACKEND_URL);
-    
-    return axios.post(`${BACKEND_URL}/otp`, data);
+    return UnauthenticatedAPI.post(`/otp`, data);
 }
 
 export const loginAPI = (data: any) => {
-    return axios.post(`${BACKEND_URL}/login`, data);
+    return UnauthenticatedAPI.post(`/login`, data);
+}
+
+export const signupAPI = (data: any) => {
+    return UnauthenticatedAPI.post('/signup', data);
 }
 
 export const logoutAPI = () => {
-    return axios.post(`${BACKEND_URL}/logout`);
+    return API.post(`/logout`,);
 }
