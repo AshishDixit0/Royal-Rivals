@@ -1,22 +1,27 @@
-import { Colors } from '@/constants/Colors';
-import React from 'react';
-import { View, Text, StyleSheet,TouchableOpacity } from 'react-native';
-// import { TouchableOpacity } from 'react-native-gesture-handler';
+import { Colors } from "@/constants/Colors";
+import React from "react";
+import { View, Text, StyleSheet, TouchableOpacity } from "react-native";
 
-const Card = () => {
+interface CardProps {
+  navigate?: any;
+}
+
+const Card = ({ navigate }: CardProps) => {
+  const hanleNavigate = () => {
+    navigate.navigate("LudoScreen");
+  };
   return (
-    <TouchableOpacity style={styles.card}>
-        <View style={styles.innercard}>
+    <TouchableOpacity style={styles.card} onPress={hanleNavigate}>
+      <View style={styles.innercard}>
         <Text style={styles.title}>4 Player</Text>
-        </View>
-      
+      </View>
+
       <View style={styles.infoContainer}>
         <View style={styles.info}>
           <Text style={styles.infoText}>Prize</Text>
           <View style={styles.boxvalue}>
-          <Text style={styles.infoValue}>₹ 80</Text>
+            <Text style={styles.infoValue}>₹ 80</Text>
           </View>
-          
         </View>
         <View style={styles.info1}>
           <Text style={styles.infoText1}>1 Winner</Text>
@@ -26,12 +31,10 @@ const Card = () => {
         <View style={styles.info}>
           <Text style={styles.infoText}>Entry Fee</Text>
           <View style={styles.boxvalue}>
-          <Text style={styles.infoValue}>₹ 30</Text> 
+            <Text style={styles.infoValue}>₹ 30</Text>
           </View>
-          
         </View>
       </View>
-      
     </TouchableOpacity>
   );
 };
@@ -45,42 +48,41 @@ const styles = StyleSheet.create({
     borderBottomColor: Colors.golden,
     borderRadius: 20,
     paddingBottom: 10,
-    paddingLeft:10,
-    paddingRight:10,
-    justifyContent: 'space-between',
-    alignItems: 'center',
-    marginTop: 50 -10, // Assuming this component starts from the top, otherwise adjust the margin as needed
+    paddingLeft: 10,
+    paddingRight: 10,
+    justifyContent: "space-between",
+    alignItems: "center",
+    marginTop: 50 - 10, // Assuming this component starts from the top, otherwise adjust the margin as needed
     marginLeft: 17,
     // elevation: 5,
     // shadowColor: Colors.golden,
   },
-  innercard:{
- backgroundColor:Colors.header_Color,
- width: 359,
- justifyContent: 'center',
- alignItems: 'center',
- borderTopLeftRadius:20,
- borderTopRightRadius:20,
-
+  innercard: {
+    backgroundColor: Colors.header_Color,
+    width: 359,
+    justifyContent: "center",
+    alignItems: "center",
+    borderTopLeftRadius: 20,
+    borderTopRightRadius: 20,
   },
   title: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 24,
-    fontWeight: 'bold',
+    fontWeight: "bold",
     marginBottom: 10,
     // fontFamily:"Aclonica",
   },
   infoContainer: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    width: '100%',
-    paddingHorizontal:10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+    width: "100%",
+    paddingHorizontal: 10,
   },
   info: {
-    justifyContent:"center",
-    alignItems: 'center',
-    display:"flex",
-    gap:5
+    justifyContent: "center",
+    alignItems: "center",
+    display: "flex",
+    gap: 5,
   },
   infoText: {
     color: "#fff",
@@ -91,34 +93,34 @@ const styles = StyleSheet.create({
     fontSize: 14,
   },
   infoValue: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 18,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   timer: {
-    color: '#EF9D1F',
+    color: "#EF9D1F",
     fontSize: 14,
-    fontWeight: 'bold',
+    fontWeight: "bold",
   },
   matchStart: {
-    color: '#FFFFFF',
+    color: "#FFFFFF",
     fontSize: 10,
     marginTop: 10,
   },
-  boxvalue:{
-    backgroundColor:Colors.header_Color,
-    width:85,
-    height:33,
-    justifyContent: 'center',
-    alignItems: 'center',
-    borderRadius:20
+  boxvalue: {
+    backgroundColor: Colors.header_Color,
+    width: 85,
+    height: 33,
+    justifyContent: "center",
+    alignItems: "center",
+    borderRadius: 20,
   },
-  info1:{
-    display:"flex",
-    flexDirection:"column",
-    justifyContent:"space-evenly",
-    alignItems:"center"
-  }
+  info1: {
+    display: "flex",
+    flexDirection: "column",
+    justifyContent: "space-evenly",
+    alignItems: "center",
+  },
 });
 
 export default Card;

@@ -1,6 +1,14 @@
 import React, { useState, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { Image, View, Text, StyleSheet, Dimensions, Alert } from "react-native";
+import {
+  Image,
+  View,
+  Text,
+  StyleSheet,
+  Dimensions,
+  Alert,
+  ScrollView,
+} from "react-native";
 import Step1 from "./Steps/Step1";
 import Step2 from "./Steps/Step2";
 import Step3 from "./Steps/Step3";
@@ -34,7 +42,7 @@ export default function KYC() {
       try {
         const savedStep = await AsyncStorage.getItem("currentStep");
         if (savedStep !== null) {
-          setStep(parseInt(savedStep));
+          setStep(parseInt("1"));
         }
       } catch (error) {
         console.error("Failed to load step from storage", error);

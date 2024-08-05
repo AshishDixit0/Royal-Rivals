@@ -30,9 +30,9 @@ export default function Footer({ navigation, currentScreen }: { navigation: any,
       case 'HomeScreen':
         return width * 0.35 - 55;
       case 'NotificationsScreen':
-        return width * 0.55 - 55;
+        return width * 0.57 - 55;
       case 'HelpScreen':
-        return width * 0.75 - 55;
+        return width * 0.79 - 55;
       default:
         return -9999; // Hide it off-screen if no screen is selected
     }
