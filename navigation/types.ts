@@ -16,4 +16,6 @@ export type AccountStackParamList = {
   Deposit: undefined;
   Home: undefined;
   GameSelect:undefined;
+  LudoScreen:undefined;
+
 }

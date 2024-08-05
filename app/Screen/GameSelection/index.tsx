@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from 'react';
+import React, {useState, useEffect } from 'react';
 import { View, Text, Animated, Image, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { Colors } from '@/constants/Colors';
@@ -8,11 +8,9 @@ import LogotextLudo from '../../../assets/images/logotext1.png';
 import LogotextSnake from '../../../assets/images/logotext2.png';
 
 const { width } = Dimensions.get('window');
-
 export default function GameSelectScreen({ navigation, route }:any) {
   const [bannerImage, setBannerImage] = useState(LogotextLudo);
-  const ludoScaleAnim = useRef(new Animated.Value(1)).current;
-  const snakeScaleAnim = useRef(new Animated.Value(1)).current;
+
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -24,32 +22,23 @@ export default function GameSelectScreen({ navigation, route }:any) {
     return () => clearInterval(interval);
   }, []);
 
-  const handlePressIn = (scaleAnim:any) => {
-    Animated.spring(scaleAnim, {
-      toValue: 1.2,
-      useNativeDriver: true,
-    }).start();
-  };
-
-  const handlePressOut = (scaleAnim:any) => {
-    Animated.spring(scaleAnim, {
-      toValue: 1,
-      useNativeDriver: true,
-    }).start();
-  };
+ 
 
   const handleSignUp = async () => {
-    navigation.navigate('Gamescreen');
+    navigation.navigate('LudoScreen');
   };
 
   return (
     <View style={styles.container}>
       <GameHeader />
-      <View style={styles.banner}>
+      <View style={styles.banner} >
         <Image source={bannerImage} style={styles.logotext} />
       </View>
       <ScrollView style={styles.scroll}>
+      <TouchableOpacity onPress={handleSignUp}>
         <Card />
+        </TouchableOpacity>
+
         <Card />
         <Card />
         <Card />

@@ -34,5 +34,9 @@ cardHolderbackground: '#160021',
 accountBackground: '#4e1e49',
 checkboxBorder: '#EF9D1F',
    header_Color:"#3C0A45",
-  home_bg:"#4e1e49"
+  home_bg:"#4e1e49",
+  Green:"#015948",
+  Red:"#D62323",
+  Blue:"#014E9C",
+  Yellow:"#EF9D1F",
 };

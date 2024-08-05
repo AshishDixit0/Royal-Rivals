@@ -60,7 +60,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
     await AsyncStorage.removeItem('token');
     await dispatch(logout());
     console.log('this is the calling');
-    // navigation.navigate("GameSelect");
+    navigation.navigate("GameSelect");
   };
 
   return (

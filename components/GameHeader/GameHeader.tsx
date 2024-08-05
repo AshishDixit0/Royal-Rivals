@@ -2,8 +2,8 @@
 import React from 'react';
 import { View, Text, Image, TouchableOpacity, StyleSheet, Dimensions } from 'react-native';
 import { Colors } from '@/constants/Colors';
-import AppLogo from "../../assets/images/appLogo.png";
-import WalletLogo from "../../assets/images/wallet.png"
+// import AppLogo from "../../assets/images/appLogo.png";
+// import WalletLogo from "../../assets/images/wallet.png"
 
 const { width } = Dimensions.get('window');
 
@@ -17,7 +17,7 @@ export default function GameHeader({ navigation }: GameHeaderProps) {
       <View style={styles.header}>
         <View style={styles.logoContainer}>
           <Image 
-            source={AppLogo} 
+            source={require("@/assets/images/appLogo.png")} 
             style={styles.logo} 
           />
         </View>
@@ -25,7 +25,7 @@ export default function GameHeader({ navigation }: GameHeaderProps) {
           <Text style={styles.balanceText}>₹ 10000</Text>
           <TouchableOpacity>
             <Image 
-              source={WalletLogo} 
+              source={require("@/assets/images/wallet.png")} 
               style={styles.walletIcon} 
             />
           </TouchableOpacity>

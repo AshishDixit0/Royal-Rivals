@@ -14,6 +14,7 @@ import { AccountStackParamList } from "./types";
 import GameSelectScreen from "@/app/Screen/GameSelection";
 import GameScreen from "@/app/Screen/HomeScreen/Game";
 import GameHeader from "@/components/GameHeader/GameHeader";
+import LudoScreen from "@/app/Screen/ludoScreen";
 
 const Stack = createNativeStackNavigator<AccountStackParamList>();
 
@@ -36,6 +37,15 @@ const AccountStack = () => (
       })}
       component={GameSelectScreen}
       name={"GameSelect"}
+    />
+    <Stack.Screen
+      options={({ navigation }) => ({
+        header: () => <GameHeader navigation={navigation} />,
+        headerTransparent: true,
+        headerTitle: "",
+      })}
+      component={LudoScreen}
+      name={"LudoScreen"}
     />
     <Stack.Screen
       options={({ navigation }) => ({
