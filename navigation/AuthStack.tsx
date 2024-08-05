@@ -2,7 +2,7 @@ import React from "react";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 import SignUp from "@/screen/Auth/Signup";
 import OTP from "@/screen/Auth/OTP";
-import GameScreen from "@/app/Screen/HomeScreen/Game";
+import GameScreen from "@/app/Screen/HomeScreen";
 import { AuthStackParamList } from "./types";
 const Stack = createNativeStackNavigator<AuthStackParamList>();
 

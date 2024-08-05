@@ -15,5 +15,5 @@ export const signupAPI = (data: any) => {
 }
 
 export const logoutAPI = () => {
-    return API.post(`/logout`,);
+    return API.post(`/logout`);
 }

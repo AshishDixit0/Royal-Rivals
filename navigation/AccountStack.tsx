@@ -13,7 +13,7 @@ import KYC from "@/screen/Account/KYC";
 import Deposit from "@/screen/Account/Wallet/deposit";
 import { AccountStackParamList } from "./types";
 import GameSelectScreen from "@/app/Screen/GameSelection";
-import GameScreen from "@/app/Screen/HomeScreen/Game";
+import GameScreen from "@/app/Screen/HomeScreen";
 import GameHeader from "@/components/GameHeader/GameHeader";
 import Footer from "@/components/Footer";
 import { Profile } from "@/app/Screen/Profile";
