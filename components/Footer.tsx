@@ -25,14 +25,14 @@ const Curve = ({ position }: { position: number }) => (
 export default function Footer({ navigation, currentScreen }: { navigation: any, currentScreen: string }) {
   const curvePosition = (screen: string) => {
     switch (screen) {
-      case 'ProfileScreen':
-        return width * 0.15 - 55;
+      case 'Profile':
+        return width * 0.13 - 55;
       case 'HomeScreen':
         return width * 0.35 - 55;
       case 'NotificationsScreen':
-        return width * 0.55 - 55;
+        return width * 0.57 - 55;
       case 'HelpScreen':
-        return width * 0.75 - 55;
+        return width * 0.79 - 55;
       default:
         return -9999; // Hide it off-screen if no screen is selected
     }
@@ -48,23 +48,23 @@ export default function Footer({ navigation, currentScreen }: { navigation: any,
       >
         <Curve position={curvePosition(currentScreen)} />
         <View style={styles.iconWrapper}>
-          {currentScreen === 'ProfileScreen' && (
+          {currentScreen === 'Profile' && (
             <>
               <View style={styles.highlightedBackground} />
             </>
           )}
           <TouchableOpacity
-            onPress={() => navigation.navigate('ProfileScreen')}
+            onPress={() => navigation.navigate('Profile')}
             style={[
               styles.iconContainer,
-              currentScreen === 'ProfileScreen' && styles.selectedIconContainer,
+              currentScreen === 'Profile' && styles.selectedIconContainer,
             ]}
           >
             <FontAwesome 
               name="user" 
               size={28} 
-              color={currentScreen === 'ProfileScreen' ? Colors.cardBackground : 'white'} 
-              style={currentScreen === 'ProfileScreen' && styles.selectedIcon}
+              color={currentScreen === 'Profile' ? Colors.cardBackground : 'white'} 
+              style={currentScreen === 'Profile' && styles.selectedIcon}
             />
           </TouchableOpacity>
         </View>
@@ -158,7 +158,7 @@ const styles = StyleSheet.create({
   },
   curve: {
     position: 'absolute',
-    bottom: 28.5, // Adjusted position to ensure it's not cut off
+    bottom: 32.5, // Adjusted position to ensure it's not cut off
     zIndex: -2,
   },
   iconWrapper: {

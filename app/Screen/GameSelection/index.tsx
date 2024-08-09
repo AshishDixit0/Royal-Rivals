@@ -1,72 +1,61 @@
-import React, {useState, useEffect } from 'react';
-import { View, Text, Animated, Image, StyleSheet, Dimensions, ScrollView, TouchableOpacity } from 'react-native';
-import { SafeAreaView } from 'react-native-safe-area-context';
-import { Colors } from '@/constants/Colors';
-import Card from '@/components/GameCard/Card';
-import GameHeader from '@/components/GameHeader/GameHeader';
-import LogotextLudo from '../../../assets/images/logotext1.png';
-import LogotextSnake from '../../../assets/images/logotext2.png';
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Image,
+  ScrollView,
+  TouchableOpacity,
+  ImageBackground,
+} from "react-native";
+import Card from "@/components/GameCard/Card";
+import GameHeader from "@/components/GameHeader/GameHeader";
+import { styles } from "./styles";
 
-const { width } = Dimensions.get('window');
-export default function GameSelectScreen({ navigation, route }:any) {
-  const [bannerImage, setBannerImage] = useState(LogotextLudo);
+interface GameSelectProps {
+  navigation: any;
+  route: any;
+}
 
+const data = {
+  LogoTextLudo: require("@/assets/images/logotext1.png"),
+  LogoTextSnake: require("@/assets/images/logotext2.png"),
+  BackgroundImage: require("@/assets/images/backgroundApp.png"),
+};
+
+export default function GameSelectScreen({ navigation }: GameSelectProps) {
+  const [bannerImage, setBannerImage] = useState(data.LogoTextLudo);
 
   useEffect(() => {
     const interval = setInterval(() => {
-      setBannerImage((prevImage:any) => 
-        prevImage === LogotextLudo ? LogotextSnake : LogotextLudo
+      setBannerImage((prevImage: any) =>
+        prevImage === data.LogoTextLudo ? data.LogoTextSnake : data.LogoTextLudo
       );
     }, 3000);
 
     return () => clearInterval(interval);
   }, []);
 
- 
-
   const handleSignUp = async () => {
-    navigation.navigate('LudoScreen');
+    navigation.navigate("LudoScreen");
   };
 
   return (
-    <View style={styles.container}>
+    <ImageBackground
+      source={data.BackgroundImage}
+      resizeMode="cover"
+      style={styles.container}
+    >
       <GameHeader />
-      <View style={styles.banner} >
+      <View style={styles.banner}>
         <Image source={bannerImage} style={styles.logotext} />
       </View>
       <ScrollView style={styles.scroll}>
-      <TouchableOpacity onPress={handleSignUp}>
-        <Card />
+        <TouchableOpacity onPress={handleSignUp}>
+          <Card />
         </TouchableOpacity>
-
-        <Card />
-        <Card />
-        <Card />
+        <Card navigate={navigation} />
+        <Card navigate={navigation} />
+        <Card navigate={navigation} />
       </ScrollView>
-    </View>
+    </ImageBackground>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: Colors.home_bg,
-  },
-  scroll: {
-    flex: 1,
-    marginTop: 20,
-  },
-  banner: {
-    height: 270,
-    width: width,
-    backgroundColor: Colors.BACKGROUND_COLOR,
-    borderBottomRightRadius: 200,
-    alignItems: 'center',
-    justifyContent: 'center',
-    marginBottom: 20,
-  },
-  logotext: {
-    height: 225,
-    width: 300,
-  },
-});

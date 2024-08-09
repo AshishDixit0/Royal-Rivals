@@ -39,4 +39,5 @@ checkboxBorder: '#EF9D1F',
   Red:"#D62323",
   Blue:"#014E9C",
   Yellow:"#EF9D1F",
+  profileCardBG: '#3d0a44',
 };

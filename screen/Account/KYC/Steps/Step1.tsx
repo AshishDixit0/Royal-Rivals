@@ -6,7 +6,10 @@ import {
   TouchableOpacity,
   StyleSheet,
   Dimensions,
-  Alert
+  Alert,
+  ScrollView,
+  SafeAreaView,
+  KeyboardAvoidingView,
 } from "react-native";
 import { Colors } from "@/constants/Colors";
 
@@ -31,62 +34,64 @@ export default function Step1({
 
   const handleNext = () => {
     if (!firstName || !lastName || !dob || !state || !address || !postal) {
-      Alert.alert('Error', 'Please fill all fields');
+      Alert.alert("Error", "Please fill all fields");
       return;
     }
     onNext({ firstName, lastName, dob, state, address, postal });
   };
 
   return (
-    <View style={styles.container}>
-      <View style={styles.inputContainer}>
-        <TextInput
-          style={styles.input}
-          placeholder="First Name"
-          placeholderTextColor="#999"
-          value={firstName}
-          onChangeText={setFirstName}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Last Name"
-          placeholderTextColor="#999"
-          value={lastName}
-          onChangeText={setLastName}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="D.O.B"
-          placeholderTextColor="#999"
-          value={dob}
-          onChangeText={setDob}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="State"
-          placeholderTextColor="#999"
-          value={state}
-          onChangeText={setState}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Address"
-          placeholderTextColor="#999"
-          value={address}
-          onChangeText={setAddress}
-        />
-        <TextInput
-          style={styles.input}
-          placeholder="Postal"
-          placeholderTextColor="#999"
-          value={postal}
-          onChangeText={setPostal}
-        />
-      </View>
-      <TouchableOpacity style={styles.button} onPress={handleNext}>
-        <Text style={styles.buttonText}>Continue</Text>
-      </TouchableOpacity>
-    </View>
+    <KeyboardAvoidingView enabled behavior="padding" style={styles.container}>
+      <ScrollView>
+        <View style={styles.inputContainer}>
+          <TextInput
+            style={styles.input}
+            placeholder="First Name"
+            placeholderTextColor="#999"
+            value={firstName}
+            onChangeText={setFirstName}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Last Name"
+            placeholderTextColor="#999"
+            value={lastName}
+            onChangeText={setLastName}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="D.O.B"
+            placeholderTextColor="#999"
+            value={dob}
+            onChangeText={setDob}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="State"
+            placeholderTextColor="#999"
+            value={state}
+            onChangeText={setState}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Address"
+            placeholderTextColor="#999"
+            value={address}
+            onChangeText={setAddress}
+          />
+          <TextInput
+            style={styles.input}
+            placeholder="Postal"
+            placeholderTextColor="#999"
+            value={postal}
+            onChangeText={setPostal}
+          />
+        </View>
+        <TouchableOpacity style={styles.button} onPress={handleNext}>
+          <Text style={styles.buttonText}>Continue</Text>
+        </TouchableOpacity>
+      </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
 

@@ -17,5 +17,6 @@ export type AccountStackParamList = {
   Home: undefined;
   GameSelect:undefined;
   LudoScreen:undefined;
-
+  Profile: undefined;
+  AccountTabs: undefined;
 }
