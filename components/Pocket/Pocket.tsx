@@ -3,9 +3,39 @@ import React from "react";
 import Pile from "../Pile/Pile";
 import { Colors } from "@/constants/Colors";
 import { BgImages } from "@/Utils/GetBgImage";
+import { useDispatch } from "react-redux";
+import { unfreezDice, updatePlayerPieceValue } from "@/store/Reducers/gameSlice";
+import { startingPoint } from "@/Utils/PlotData";
 
-const Pocket = React.memo(({ color, player }: any) => {
+const Pocket = React.memo(({ color, player,data }: any) => {
   const backgroundImage = BgImages.GetImage(color)
+
+  const dispatch =useDispatch()
+  const handelPress=async (value:any)=>{
+    let playerNo=value?.id[0]
+    switch(playerNo)
+    {
+      case'A':
+      playerNo='player1'
+      break;
+      case'B':
+      playerNo='player2'
+      break;
+      case'C':
+      playerNo='player3'
+      break;
+      case'D':
+      playerNo='player4'
+      break;
+    }
+    dispatch(updatePlayerPieceValue({
+      playerNo:playerNo,
+      pieceId:value.id,
+      pos:startingPoint[parseInt(playerNo.match(/\d+/)[0])-1],
+      travelCount:1,
+    }))
+    dispatch(unfreezDice())
+  }
   return (
     <View style={styles.container}>
       <ImageBackground
@@ -14,12 +44,12 @@ const Pocket = React.memo(({ color, player }: any) => {
       >
         <View style={styles.childFrame}>
           <View style={styles.flexRow}>
-            <Plot piecNo={0} player={player} color={color} />
-            <Plot piecNo={1} player={player} color={color} />
+            <Plot piecNo={0} data={data} player={player} color={color} onPress={handelPress} />
+            <Plot piecNo={1} data={data} player={player} color={color} onPress={handelPress} />
           </View>
           <View style={[styles.flexRow,{marginTop:20}]}>
-            <Plot piecNo={0} player={player} color={color} />
-            <Plot piecNo={1} player={player} color={color} />
+            <Plot piecNo={2} data={data} player={player} color={color} onPress={handelPress}/>
+            <Plot piecNo={3} data={data} player={player} color={color} onPress={handelPress}/>
           </View>
         </View>
       </ImageBackground>
@@ -27,10 +57,15 @@ const Pocket = React.memo(({ color, player }: any) => {
   );
 });
 
-const Plot = ({ piecNo, player, color }: any) => {
+const Plot = ({ piecNo, player, color,data,onPress }: any) => {
+  console.log(data,"pieceeeeee")
   return (
     <View style={[styles.plot, { backgroundColor: color }]}>
-      <Pile color={color} player={player}/>
+      {data && data[piecNo]?.pos===0 &&
+     ( 
+     <Pile color={color} player={player} onPress={()=>onPress(data[piecNo])}/>
+    )
+      }
     </View>
   );
 };
@@ -72,9 +107,9 @@ const styles = StyleSheet.create({
     // display:"flex",
    justifyContent:"center",
    alignItems:"center",
-    // height:"80%",
-    // width:"36%",
-    borderRadius:120,
+    height:19.52,
+    width:21.53,
+    borderRadius:100
   },
 });
 export default Pocket;

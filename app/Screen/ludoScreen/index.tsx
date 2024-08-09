@@ -1,6 +1,6 @@
 import { View, Text, StyleSheet, Dimensions, SafeAreaView } from "react-native";
-import GameHeader from "@/components/GameHeader/GameHeader";
-import React from "react";
+// import GameHeader from "@/components/GameHeader/GameHeader";
+// import React from "react";
 import Dice from "@/components/Dice/Dice";
 import { Colors } from "@/constants/Colors";
 import Pocket from "@/components/Pocket/Pocket";
@@ -21,6 +21,7 @@ const player2= useSelector(selectPlayer2)
 const player3= useSelector(selectPlayer3)
 const player4= useSelector(selectPlayer4)
 
+
 const isDiceTouch = useSelector(selectDiceTouch)
 const winner = useSelector((state:any)=>state.game.winner)
 
@@ -29,15 +30,15 @@ const winner = useSelector((state:any)=>state.game.winner)
       {/* <GameHeader /> */}
       <View style={styles.container2}>
         <View style={styles.innerContainer}>
-          <View style={styles.flexRow}>
-            <Dice color={Colors.Green} player={2} />
-            <Dice color={Colors.Yellow} rotate  player={3}/>
+          <View style={styles.flexRow} pointerEvents={isDiceTouch?'none':'auto'}>
+            <Dice color={Colors.Red} player={2} data={player2} />
+            <Dice color={Colors.Green} rotate  player={3} data={player3}/>
           </View>
           <View style={styles.ludoBoard}>
             <View style={styles.plotContainer}>
-              <Pocket color={Colors.Red} player={2} />
+              <Pocket color={Colors.Red} player={2} data={player2}/>
               <VerticalPath cells={Plot2Data} color={Colors.Green} />
-              <Pocket color={Colors.Green} player={3} />
+              <Pocket color={Colors.Green} player={3} data={player3} />
             </View>
             <View style={styles.pathContainer}>
               <HorizontalPath cells={plot1Data} color={Colors.Red} />
@@ -45,14 +46,14 @@ const winner = useSelector((state:any)=>state.game.winner)
               <HorizontalPath cells={plot3Data} color={Colors.Yellow} />
             </View>
             <View style={styles.plotContainer}>
-              <Pocket color={Colors.Blue} player={1} />
+              <Pocket color={Colors.Blue} player={1} data={player1}/>
               <VerticalPath cells={plot4Data} color={Colors.Blue} />
-              <Pocket color={Colors.Yellow} player={4} />
+              <Pocket color={Colors.Yellow} player={4} data={player4} />
             </View>
           </View>
-          <View style={styles.flexRow}>
-            <Dice color={Colors.Red} player={1}/>
-            <Dice color={Colors.Yellow} rotate player={4}/>
+          <View style={styles.flexRow} pointerEvents={isDiceTouch?'none':'auto'}  >
+            <Dice color={Colors.Blue} player={1} data={player1}/>
+            <Dice color={Colors.Yellow} rotate player={4} data={player4}/>
           </View>
         </View>
       </View>

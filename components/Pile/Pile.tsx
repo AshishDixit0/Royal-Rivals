@@ -1,16 +1,34 @@
 import { StyleSheet, Text, Touchable, TouchableOpacity, View,Image } from 'react-native'
-import React from 'react'
+import React, { useCallback } from 'react'
 import { BackgroundImages } from '@/Utils/GetIcon'
+import { useSelector } from 'react-redux';
+import { selectCellSelection, selectDiceNo, selectPocketPileSelection } from '@/store/Reducers/gameSelection';
+import { useMemo } from 'react';
 
 const Pile = ({color, player, pieceId,onPress,cell }:any) => {
-  const pileImage = BackgroundImages.GetImage(color)
+  const pileImage = BackgroundImages.GetImage(color);
+  const currentPlayerPileSelection=useSelector(selectPocketPileSelection)
+  const currentPlayerCellSelection=useSelector(selectCellSelection)
+  const diceNo=useSelector(selectDiceNo)
+  const playerPieces=useSelector((state:any)=>state.game[`player${player}`])
+  const isPileEnabled=useMemo(()=>player===currentPlayerPileSelection,[player,currentPlayerPileSelection])
+  const isCellEnabled=useMemo(()=>player===currentPlayerCellSelection,[player,currentPlayerCellSelection])
+  const isForwardable=useCallback(()=>{
+    const piece = playerPieces?.find((item:any)=>item.id===pieceId)
+    return piece && piece.travelCount + diceNo<=57;
+  },[playerPieces,pieceId,diceNo])
+
+
   return (
-    <TouchableOpacity style={styles.continer}>
+    <TouchableOpacity style={styles.continer} 
+    disabled={!(cell?isCellEnabled && isForwardable():isPileEnabled)}
+    onPress={onPress} 
+    >
       <Image source={pileImage} style={styles.image}/>
     </TouchableOpacity>
   )
 }
-
+ 
 export default React.memo(Pile)
 
 const styles = StyleSheet.create({

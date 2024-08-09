@@ -7,7 +7,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentPlayerChance, selectDiceNo, selectDiceRolled } from "@/store/Reducers/gameSelection";
 import { RootState } from "@/store";
 import { current } from "@reduxjs/toolkit";
-import { enablePileSelection, updateDiceNo, updatePlayerChance } from "@/store/Reducers/gameSlice";
+import { enableCellSelection, enablePileSelection, updateDiceNo, updatePlayerChance } from "@/store/Reducers/gameSlice";
 // import LottieView from "lottie-react-native";
 // interface diceState{
 //   color:any,
@@ -55,7 +55,26 @@ const Dice = React.memo(({ color, player, data, rotate }:any) => {
       }
     }
     else{
-      const canMove= playerPieces.some((pile:any)=>pile.travelCount+newDiceNo<=57 && pile.pos!=0)
+      const canMove= playerPieces.some((pile:any)=>pile.travelCount+newDiceNo<=57 && pile.pos!=0);
+      if((!canMove && diceNo==6 && isAnyPieceLocked==-1)||
+      (!canMove && diceNo!=6 && isAnyPieceLocked!=-1)||
+      (!canMove && diceNo==6 && isAnyPieceLocked==-1)
+    )
+      {
+        let chancePlayer=player+1;
+        if(chancePlayer>4)
+        {
+          chancePlayer=1
+        }
+        await delay(600)
+        dispatch(updatePlayerChance({chancePlayer:chancePlayer}))
+        return;
+      }
+      if(newDiceNo==6)
+      {
+       dispatch (enablePileSelection({playerNo:player}))
+      }
+      dispatch(enableCellSelection({playerNo:player}))
     }
   }
  
