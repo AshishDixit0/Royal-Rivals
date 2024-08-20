@@ -41,6 +41,7 @@ const styles = StyleSheet.create({
         alignItems:"center",
         width:150.21,
         height:69.59,
+        paddingLeft:7
     },
     innerContainer:{
         flexDirection:"column",

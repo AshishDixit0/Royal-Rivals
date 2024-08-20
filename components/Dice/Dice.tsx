@@ -32,6 +32,7 @@ const Dice = React.memo(({ color, player, data, rotate }:any) => {
   const delay=(ms:any)=>new Promise(resolve=>setTimeout(resolve,ms));
   const handelDicePress =async ()=>{
     const newDiceNo=Math.floor(Math.random()*6)+1
+    // const newDiceNo=6
     console.log(newDiceNo)
     await delay(800)
     dispatch(updateDiceNo({diceNo:newDiceNo}))
@@ -58,7 +59,7 @@ const Dice = React.memo(({ color, player, data, rotate }:any) => {
       const canMove= playerPieces.some((pile:any)=>pile.travelCount+newDiceNo<=57 && pile.pos!=0);
       if((!canMove && diceNo==6 && isAnyPieceLocked==-1)||
       (!canMove && diceNo!=6 && isAnyPieceLocked!=-1)||
-      (!canMove && diceNo==6 && isAnyPieceLocked==-1)
+      (!canMove && diceNo!=6 && isAnyPieceLocked==-1)
     )
       {
         let chancePlayer=player+1;
@@ -119,6 +120,8 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     flexDirection: "row",
+    // backgroundColor:"red",
+    gap:6,
   },
   border1: {
     borderWidth: 3,

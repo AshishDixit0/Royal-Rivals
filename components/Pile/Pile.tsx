@@ -4,8 +4,10 @@ import { BackgroundImages } from '@/Utils/GetIcon'
 import { useSelector } from 'react-redux';
 import { selectCellSelection, selectDiceNo, selectPocketPileSelection } from '@/store/Reducers/gameSelection';
 import { useMemo } from 'react';
+import { RootState } from '@/store';
 
 const Pile = ({color, player, pieceId,onPress,cell }:any) => {
+  console.log(pieceId,"iddddd")
   const pileImage = BackgroundImages.GetImage(color);
   const currentPlayerPileSelection=useSelector(selectPocketPileSelection)
   const currentPlayerCellSelection=useSelector(selectCellSelection)
@@ -14,9 +16,17 @@ const Pile = ({color, player, pieceId,onPress,cell }:any) => {
   const isPileEnabled=useMemo(()=>player===currentPlayerPileSelection,[player,currentPlayerPileSelection])
   const isCellEnabled=useMemo(()=>player===currentPlayerCellSelection,[player,currentPlayerCellSelection])
   const isForwardable=useCallback(()=>{
+    // console.log(playerPieces,"pieces........")
     const piece = playerPieces?.find((item:any)=>item.id===pieceId)
+    console.log(piece ,"check...")
     return piece && piece.travelCount + diceNo<=57;
   },[playerPieces,pieceId,diceNo])
+
+// console.log(cell,!(cell?isCellEnabled && isForwardable():isPileEnabled),"cellllll")
+// console.log(isCellEnabled,"enb");
+console.log(isForwardable(),"for");
+// console.log(isPileEnabled,"pile");
+
 
 
   return (

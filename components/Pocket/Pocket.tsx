@@ -58,7 +58,7 @@ const Pocket = React.memo(({ color, player,data }: any) => {
 });
 
 const Plot = ({ piecNo, player, color,data,onPress }: any) => {
-  console.log(data,"pieceeeeee")
+  // console.log(data,"pieceeeeee")
   return (
     <View style={[styles.plot, { backgroundColor: color }]}>
       {data && data[piecNo]?.pos===0 &&

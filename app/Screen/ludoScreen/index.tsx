@@ -10,6 +10,7 @@ import HorizontalPath from "@/components/HorizontalPath/HorizontalPath";
 import FourTriangles from "@/components/FourTriangles/FourTriangles";
 import { useSelector } from "react-redux";
 import { selectDiceTouch, selectPlayer1, selectPlayer2, selectPlayer3, selectPlayer4 } from "@/store/Reducers/gameSelection";
+import Timer from "@/components/Timer/Timer";
 
 const height = Dimensions.get("screen").height;
 const width = Dimensions.get("screen").width;
@@ -26,9 +27,13 @@ const isDiceTouch = useSelector(selectDiceTouch)
 const winner = useSelector((state:any)=>state.game.winner)
 
   return (
-    <View style={styles.container}>
-      {/* <GameHeader /> */}
+    <SafeAreaView style={styles.container}>
+      
+     
       <View style={styles.container2}>
+      <View style={styles.timer}>
+      <Timer/>
+      </View>
         <View style={styles.innerContainer}>
           <View style={styles.flexRow} pointerEvents={isDiceTouch?'none':'auto'}>
             <Dice color={Colors.Red} player={2} data={player2} />
@@ -42,7 +47,13 @@ const winner = useSelector((state:any)=>state.game.winner)
             </View>
             <View style={styles.pathContainer}>
               <HorizontalPath cells={plot1Data} color={Colors.Red} />
-              <FourTriangles/>
+              <FourTriangles
+              player1={player1}
+              player2={player2}
+              player3={player3}
+              player4={player4}
+
+              />
               <HorizontalPath cells={plot3Data} color={Colors.Yellow} />
             </View>
             <View style={styles.plotContainer}>
@@ -57,7 +68,7 @@ const winner = useSelector((state:any)=>state.game.winner)
           </View>
         </View>
       </View>
-    </View>
+    </SafeAreaView>
   );
 };
 
@@ -70,24 +81,36 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     backgroundColor: Colors.home_bg,
   },
+  timer:{
+    position:"absolute",
+    top:130,
+    right:60,
+    // backgroundColor:"red"
+  },
   container2: {
+    top:50,
     alignItems: "center",
     justifyContent: "center",
     height: height,
     width: width,
+    // backgroundColor:"green"
   },
   innerContainer: {
     alignSelf: "center",
-    height: height * 0.5,
+    justifyContent:"center",
+    height: height * 0.45,
     width: width,
     // backgroundColor:"red"
   },
   pathContainer: {
     flexDirection: "row",
-    width: "100%",
-    height: "20%",
+    // width: "100%",
+    height: "16%",
     alignItems:"center",
-    justifyContent: "space-between",
+    justifyContent: "center",
+    paddingLeft:0,
+    // paddingRight:5,
+    
     // backgroundColor: "#1E5162",
   },
   flexRow: {
@@ -98,20 +121,23 @@ const styles = StyleSheet.create({
    
   },
   ludoBoard: {
-    // width: "100%",
-    // height: "100%",
+    width: "100%",
+    height: "100%",
     alignSelf: "center",
+    justifyContent:"center",
+
+    // backgroundColor:"red"
     // gap:2
    
     //  flexDirection:"row",
   },
   plotContainer: {
     flexDirection: "row",
-    width: "100%",
+    // width: "100%",
     // height: "40%",
     alignItems:"center",
-    justifyContent: "space-between",
-    margin:2,
+    justifyContent: "center",
+    // margin:2,
     // gap:2,
     // backgroundColor: "#ccc",
   },

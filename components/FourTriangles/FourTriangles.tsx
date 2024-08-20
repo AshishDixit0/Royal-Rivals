@@ -4,7 +4,15 @@ import { Polygon, Svg, Image, ClipPath, Defs } from 'react-native-svg';
 import { Colors } from '@/constants/Colors';
 import { BgImages } from '@/Utils/GetBgImage';
 
-const FourTriangles = () => {
+interface FourTriangles{
+  player1:{},
+  player2:{},
+  player3:{},
+  player4:{},
+
+}
+
+const FourTriangles = ({player1, player2, player3, player4}:FourTriangles) => {
   const size = 200;
  
 
@@ -42,11 +50,12 @@ const styles = StyleSheet.create({
     justifyContent: 'center',
     borderWidth: 0.8,
     width: 70.46,
-    height: 65.87,
+    height: 70.46,
     overflow: 'hidden',
-    backgroundColor: 'white',
+    // backgroundColor: 'red',
     borderColor: 'black',
-    margin:2
+    
+    // margin:2
     
   },
 });

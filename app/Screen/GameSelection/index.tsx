@@ -21,7 +21,7 @@ const data = {
   BackgroundImage: require("@/assets/images/backgroundApp.png"),
 };
 
-export default function GameSelectScreen({ navigation }: GameSelectProps) {
+export default function GameSelectScreen({ navigation }: { navigation: any }) {
   const [bannerImage, setBannerImage] = useState(data.LogoTextLudo);
 
   useEffect(() => {
