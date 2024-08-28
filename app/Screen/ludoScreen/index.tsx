@@ -5,7 +5,7 @@ import Dice from "@/components/Dice/Dice";
 import { Colors } from "@/constants/Colors";
 import Pocket from "@/components/Pocket/Pocket";
 import VerticalPath from "@/components/VerticalPath/VerticalPath";
-import { plot1Data, Plot2Data, plot3Data, plot4Data } from "@/Utils/PlotData";
+import { plot1Data, Plot2Data, plot3Data, plot4Data } from "@/utils/PlotData";
 import HorizontalPath from "@/components/HorizontalPath/HorizontalPath";
 import FourTriangles from "@/components/FourTriangles/FourTriangles";
 import { useSelector } from "react-redux";
@@ -28,8 +28,6 @@ const winner = useSelector((state:any)=>state.game.winner)
 
   return (
     <SafeAreaView style={styles.container}>
-      
-     
       <View style={styles.container2}>
       <View style={styles.timer}>
       <Timer/>

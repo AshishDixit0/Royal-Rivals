@@ -10,8 +10,8 @@ export default function HomeScreen() {
   return (
     <Provider store={store}>
       <QueryClientProvider client={queryClient}>
-        {/* <AuthNavigator /> */}
-        <AccountStack/>
+        <AuthNavigator />
+        {/* <AccountStack/> */}
       </QueryClientProvider>
     </Provider>
   );

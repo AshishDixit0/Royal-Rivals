@@ -1,0 +1,626 @@
+{
+    "firstSection": [
+      [
+        {
+          "position": 5,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 6
+        },
+        {
+          "position": 4,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 5
+        },
+        {
+          "position": 3,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": true,
+          "isHomeEntry": false,
+          "nextPosition": 4
+        },
+        {
+          "position": 2,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 3
+        },
+        {
+          "position": 1,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 2
+        },
+        {
+          "position": 0,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 1
+        }
+      ],
+      [
+        {
+          "position": 6,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": true,
+          "homeEntryFor": "PLAYER-2",
+          "nextPosition": 7,
+          "nextPositionForHome": 52
+        },
+        {
+          "position": 52,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-2",
+          "nextPosition": 53
+        },
+        {
+          "position": 53,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-2",
+          "nextPosition": 54
+        },
+        {
+          "position": 54,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-2",
+          "nextPosition": 55
+        },
+        {
+          "position": 55,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-2",
+          "nextPosition": 56
+        },
+        {
+          "position": 56,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-2",
+          "nextPosition": 100
+        }
+      ],
+      [
+        {
+          "position": 7,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 8
+        },
+        {
+          "position": 8,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 9,
+          "isStart": true,
+          "startFor": "PLAYER-2"
+        },
+        {
+          "position": 9,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 10
+        },
+        {
+          "position": 10,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 11
+        },
+        {
+          "position": 11,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 12
+        },
+        {
+          "position": 12,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 13
+        }
+      ]
+    ],
+    "thirdSection": [
+      [
+        {
+          "position": 13,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 14
+        },
+        {
+          "position": 14,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 15
+        },
+        {
+          "position": 15,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 16
+        },
+        {
+          "position": 16,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": true,
+          "isHomeEntry": false,
+          "nextPosition": 17
+        },
+        {
+          "position": 17,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 18
+        },
+        {
+          "position": 18,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 19
+        }
+      ],
+      [
+        {
+          "position": 61,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-3",
+          "nextPosition": 100
+        },
+        {
+          "position": 60,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-3",
+          "nextPosition": 61
+        },
+        {
+          "position": 59,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-3",
+          "nextPosition": 60
+        },
+        {
+          "position": 58,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-3",
+          "nextPosition": 59
+        },
+        {
+          "position": 57,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-3",
+          "nextPosition": 58
+        },
+        {
+          "position": 19,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": true,
+          "homeEntryFor": "PLAYER-3",
+          "nextPosition": 20,
+          "nextPositionForHome": 57
+        }
+      ],
+      [
+        {
+          "position": 25,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 26
+        },
+        {
+          "position": 24,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 25
+        },
+        {
+          "position": 23,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 24
+        },
+        {
+          "position": 22,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 23
+        },
+        {
+          "position": 21,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 22,
+          "isStart": true,
+          "startFor": "PLAYER-3"
+        },
+        {
+          "position": 20,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 21
+        }
+      ]
+    ],
+    "secondSection": [
+      [
+        {
+          "position": 46,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 47
+        },
+        {
+          "position": 47,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 48,
+          "isStart": true,
+          "startFor": "PLAYER-1"
+        },
+        {
+          "position": 48,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 49
+        },
+        {
+          "position": 49,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 50
+        },
+        {
+          "position": 50,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 51
+        },
+        {
+          "position": 51,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 0
+        }
+      ],
+      [
+        {
+          "position": 45,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": true,
+          "homeEntryFor": "PLAYER-1",
+          "nextPosition": 46,
+          "nextPositionForHome": 67
+        },
+        {
+          "position": 67,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-1",
+          "nextPosition": 68
+        },
+        {
+          "position": 68,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-1",
+          "nextPosition": 69
+        },
+        {
+          "position": 69,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-1",
+          "nextPosition": 69
+        },
+        {
+          "position": 70,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-1",
+          "nextPosition": 71
+        },
+        {
+          "position": 71,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-1",
+          "nextPosition": 100
+        }
+      ],
+      [
+        {
+          "position": 44,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 45
+        },
+        {
+          "position": 43,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 44
+        },
+        {
+          "position": 42,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": true,
+          "isHomeEntry": false,
+          "nextPosition": 43
+        },
+        {
+          "position": 41,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 42
+        },
+        {
+          "position": 40,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 41
+        },
+        {
+          "position": 39,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 40
+        }
+      ]
+    ],
+    "fourthSection": [
+      [
+        {
+          "position": 38,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 39
+        },
+        {
+          "position": 37,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 38
+        },
+        {
+          "position": 36,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 37
+        },
+        {
+          "position": 35,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 36
+        },
+        {
+          "position": 34,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 35,
+          "isStart": true,
+          "startFor": "PLAYER-4"
+        },
+        {
+          "position": 33,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 34
+        }
+      ],
+      [
+        {
+          "position": 66,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-4",
+          "nextPosition": 100
+        },
+        {
+          "position": 65,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-4",
+          "nextPosition": 66
+        },
+        {
+          "position": 64,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-4",
+          "nextPosition": 65
+        },
+        {
+          "position": 63,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-4",
+          "nextPosition": 64
+        },
+        {
+          "position": 62,
+          "tokenData": [],
+          "isHomePosition": true,
+          "isSafe": false,
+          "homeFor": "PLAYER-4",
+          "nextPosition": 63
+        },
+        {
+          "position": 32,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": true,
+          "homeEntryFor": "PLAYER-4",
+          "nextPosition": 33,
+          "nextPositionForHome": 62
+        }
+      ],
+      [
+        {
+          "position": 26,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 27
+        },
+        {
+          "position": 27,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 28
+        },
+        {
+          "position": 28,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 29
+        },
+        {
+          "position": 29,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": true,
+          "isHomeEntry": false,
+          "nextPosition": 30
+        },
+        {
+          "position": 30,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 31
+        },
+        {
+          "position": 31,
+          "tokenData": [],
+          "isHomePosition": false,
+          "isSafe": false,
+          "isHomeEntry": false,
+          "nextPosition": 32
+        }
+      ]
+    ]
+  }

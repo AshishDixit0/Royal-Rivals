@@ -18,7 +18,7 @@ export const checkToken = createAsyncThunk('auth/checkToken', async () => {
 });
 
 export const logout = createAsyncThunk('auth/logout', async () => {
-  await logoutAPI();
+  // await logoutAPI();
   await AsyncStorage.removeItem('token');
   await getToken();
 })

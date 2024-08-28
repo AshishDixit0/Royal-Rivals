@@ -3,7 +3,7 @@ import {
   startingPoint,
   turningPoint,
   victoryStart,
-} from "@/Utils/PlotData";
+} from "@/utils/PlotData";
 import { selectCurrentPostions, selectDiceNo } from "./gameSelection";
 import {
   announceWinner,

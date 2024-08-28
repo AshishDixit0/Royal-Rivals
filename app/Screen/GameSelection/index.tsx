@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 import {
   View,
   Image,
@@ -8,12 +8,11 @@ import {
 } from "react-native";
 import Card from "@/components/GameCard/Card";
 import GameHeader from "@/components/GameHeader/GameHeader";
+import { useDispatch, useSelector } from "react-redux";
 import { styles } from "./styles";
-
-interface GameSelectProps {
-  navigation: any;
-  route: any;
-}
+import { getRoomApi } from "@/store/GameRoom";
+import { logout } from "@/store/AuthSlice";
+import API from "@/services/API";
 
 const data = {
   LogoTextLudo: require("@/assets/images/logotext1.png"),
@@ -23,7 +22,10 @@ const data = {
 
 export default function GameSelectScreen({ navigation }: { navigation: any }) {
   const [bannerImage, setBannerImage] = useState(data.LogoTextLudo);
-
+  const dispatch = useDispatch()<any>;
+  const roomData = useSelector((state: any) => state.GameRoomReducer);
+  const [loader, setLoader] = useState(false)
+  
   useEffect(() => {
     const interval = setInterval(() => {
       setBannerImage((prevImage: any) =>
@@ -34,9 +36,32 @@ export default function GameSelectScreen({ navigation }: { navigation: any }) {
     return () => clearInterval(interval);
   }, []);
 
+  useEffect(() => {
+    dispatch(getRoomApi());
+  }, []);
+
   const handleSignUp = async () => {
-    navigation.navigate("LudoScreen");
+    navigation.navigate('LudoScreen')
+    // dispatch(logout());
   };
+
+  const onGameSelection = async (id: any) => {
+    console.log('this is the id: ', id);
+    
+    setLoader(true)
+    await API
+      .get(`room/${id}`)
+      .then((response) => {
+        const _data = response.data
+        console.log(_data, "jlllllllllllllllllllljjjjj")
+        if (_data.message) {
+          navigation.navigate('GameScreen', {
+            gameData: _data
+          })
+          setLoader(false)
+        }
+      });
+  }
 
   return (
     <ImageBackground
@@ -49,12 +74,9 @@ export default function GameSelectScreen({ navigation }: { navigation: any }) {
         <Image source={bannerImage} style={styles.logotext} />
       </View>
       <ScrollView style={styles.scroll}>
-        <TouchableOpacity onPress={handleSignUp}>
-          <Card />
-        </TouchableOpacity>
-        <Card navigate={navigation} />
-        <Card navigate={navigation} />
-        <Card navigate={navigation} />
+        {roomData?.room?.map((gameType: any) => (
+          <Card key={gameType._id} gameData={gameType} navigate={navigation} />
+        ))}
       </ScrollView>
     </ImageBackground>
   );

@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
-import { BackgroundImages } from "@/Utils/GetIcon";
+import { BackgroundImages } from "@/utils/GetIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentPlayerChance, selectDiceNo, selectDiceRolled } from "@/store/Reducers/gameSelection";
 import { RootState } from "@/store";
@@ -16,69 +16,77 @@ import { enableCellSelection, enablePileSelection, updateDiceNo, updatePlayerCha
 //   rotate:any,
 // }
 
-const Dice = React.memo(({ color, player, data, rotate }:any) => {
+const Dice = React.memo(({ color, player, data, rotate }: any) => {
   const dispatch = useDispatch()
-  const currentPlayerChance=useSelector(selectCurrentPlayerChance)
-  const isDiceRolled= useSelector(selectDiceRolled)
+  const currentPlayerChance = useSelector(selectCurrentPlayerChance)
+  const isDiceRolled = useSelector(selectDiceRolled)
 
-  const diceNo=useSelector((state:RootState)=>state.game.diceNo)
-  const playerPieces=useSelector(
-    (state:any)=>state.game[`player${currentPlayerChance}`],
+  const diceNo = useSelector((state: RootState) => state.game.diceNo)
+  const playerPieces = useSelector(
+    (state: any) => state.game[`player${currentPlayerChance}`],
   )
 
   const pileIcon = BackgroundImages.GetImage(color);
   const diceIcon = BackgroundImages.GetImage(diceNo);
 
-  const delay=(ms:any)=>new Promise(resolve=>setTimeout(resolve,ms));
-  const handelDicePress =async ()=>{
-    const newDiceNo=Math.floor(Math.random()*6)+1
-    // const newDiceNo=6
-    console.log(newDiceNo)
-    await delay(800)
-    dispatch(updateDiceNo({diceNo:newDiceNo}))
+  const delay = (ms: any) => new Promise(resolve => setTimeout(resolve, ms));
 
-    const isAnyPieceAlive=data?.findIndex((i:any)=>i.pos!=0 && i.pos!=57);
-    const isAnyPieceLocked= data?.findIndex((i:any)=>i.pos==0)
+  const handelDicePress = async () => {
+    const newDiceNo = Math.floor(Math.random() * 6) + 1;
+    console.log(newDiceNo);
 
-    if(isAnyPieceAlive==-1)
-    {
-      if(newDiceNo==6)
-      {dispatch(enablePileSelection({playerNo:player}))}
-      else
-      {
-        let chancePlayer=player+1;
-        if(chancePlayer>4)
-        {
-          chancePlayer=1
+    dispatch(updateDiceNo({ diceNo: newDiceNo }));
+
+    const isAnyPieceAlive = data?.findIndex((i: any) => i.pos !== 0 && i.pos !== 57);
+    const isAnyPieceLocked = data?.findIndex((i: any) => i.pos === 0);
+
+    if (isAnyPieceAlive === -1) {
+        if (newDiceNo === 6) {
+            // If a 6 is rolled, allow token to be released
+            dispatch(enablePileSelection({ playerNo: player }));
+        } else {
+            // Change the player turn if no 6 is rolled
+            console.log('this is called', player);
+            
+            let chancePlayer = player + 1;
+            if (chancePlayer > 4) {
+                chancePlayer = 1;
+            }
+            dispatch(updatePlayerChance({ chancePlayer }));
         }
-        await delay(600)
-        dispatch(updatePlayerChance({chancePlayer:chancePlayer}))
+    } else {
+      
+      const canMove = playerPieces.some((pile: any) => pile.travelCount + newDiceNo <= 57 && pile.pos !== 0);
+      const isAnyPieceLocked = data?.findIndex((i: any) => i.pos === 0);
+      
+      if (
+        (!canMove && newDiceNo === 6 && isAnyPieceLocked === -1) || 
+        (!canMove && newDiceNo !== 6) 
+      ) {
+        console.log('no no this is called');
+          // If no pieces can move, pass the turn to the next player
+          let chancePlayer = player + 1;
+          if (chancePlayer > 4) {
+              chancePlayer = 1;
+          }
+          await delay(600);
+          dispatch(updatePlayerChance({ chancePlayer }));
       }
-    }
-    else{
-      const canMove= playerPieces.some((pile:any)=>pile.travelCount+newDiceNo<=57 && pile.pos!=0);
-      if((!canMove && diceNo==6 && isAnyPieceLocked==-1)||
-      (!canMove && diceNo!=6 && isAnyPieceLocked!=-1)||
-      (!canMove && diceNo!=6 && isAnyPieceLocked==-1)
-    )
-      {
-        let chancePlayer=player+1;
-        if(chancePlayer>4)
-        {
-          chancePlayer=1
-        }
-        await delay(600)
-        dispatch(updatePlayerChance({chancePlayer:chancePlayer}))
-        return;
+  
+      // If a 6 is rolled and a piece is locked, allow the user to select a pile
+
+      else if (newDiceNo === 6) {
+          dispatch(enablePileSelection({ playerNo: player }));
+          dispatch(enableCellSelection({ playerNo: player }));
+      } else {
+        
+        // If any other number is rolled, enable the movement of the pile
+        dispatch(enablePileSelection({ playerNo: player }))
+        dispatch(enableCellSelection({ playerNo: player }));
       }
-      if(newDiceNo==6)
-      {
-       dispatch (enablePileSelection({playerNo:player}))
-      }
-      dispatch(enableCellSelection({playerNo:player}))
-    }
   }
- 
+};
+
 
   return (
     <View
@@ -91,15 +99,15 @@ const Dice = React.memo(({ color, player, data, rotate }:any) => {
         />
       </View>
       <View style={styles.border2}>
-        { currentPlayerChance==player ? (
+        {currentPlayerChance == player ? (
           <TouchableOpacity
-          onPress={handelDicePress}
+            onPress={handelDicePress}
           >
-          <Image source={diceIcon} style={styles.Dice} />
-        </TouchableOpacity>
-         ) :<></> 
+            <Image source={diceIcon} style={styles.Dice} />
+          </TouchableOpacity>
+        ) : <></>
 
-}
+        }
       </View>
       {/* <LottieView
       source={}
@@ -121,7 +129,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     // backgroundColor:"red",
-    gap:6,
+    gap: 6,
   },
   border1: {
     borderWidth: 3,

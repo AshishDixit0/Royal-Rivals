@@ -1,11 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 import authReducer from './AuthSlice';
 import gameReducer from './Reducers/gameSlice';
+import GameRoomReducer from './GameRoom';
+import GameMapReducer from './GameMap';
+import AllPlayersReducer from './AllPlayers';
 
 export const store = configureStore({
   reducer: {
     auth: authReducer,
     game: gameReducer,
+    GameRoomReducer,
+    GameMapReducer,
+    AllPlayersReducer,
   },
 });
 

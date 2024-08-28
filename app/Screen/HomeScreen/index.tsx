@@ -1,4 +1,4 @@
-import React, { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect } from "react";
 import {
   View,
   Text,
@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { useDispatch } from "react-redux";
 import { styles } from "./styles";
+import { logout } from "@/store/AuthSlice";
 
 const data = {
   AppLogo: require("@/assets/images/appLogo.png"),
@@ -55,6 +56,7 @@ export default function HomeScreen({ navigation }: { navigation: any }) {
 
   const handleNav = async () => {
     navigation.navigate("GameSelect");
+    // dispatch(logout());
   };
 
   return (

@@ -2,7 +2,7 @@ import { StyleSheet, View } from 'react-native';
 import React from 'react';
 import { Polygon, Svg, Image, ClipPath, Defs } from 'react-native-svg';
 import { Colors } from '@/constants/Colors';
-import { BgImages } from '@/Utils/GetBgImage';
+import { BgImages } from '@/utils/GetBgImage';
 
 interface FourTriangles{
   player1:{},

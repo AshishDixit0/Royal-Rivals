@@ -2,10 +2,10 @@ import { View, Text, StyleSheet, ImageBackground } from "react-native";
 import React from "react";
 import Pile from "../Pile/Pile";
 import { Colors } from "@/constants/Colors";
-import { BgImages } from "@/Utils/GetBgImage";
+import { BgImages } from "@/utils/GetBgImage";
 import { useDispatch } from "react-redux";
 import { unfreezDice, updatePlayerPieceValue } from "@/store/Reducers/gameSlice";
-import { startingPoint } from "@/Utils/PlotData";
+import { startingPoint } from "@/utils/PlotData";
 
 const Pocket = React.memo(({ color, player,data }: any) => {
   const backgroundImage = BgImages.GetImage(color)
