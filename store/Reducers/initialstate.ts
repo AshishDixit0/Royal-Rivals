@@ -36,5 +36,6 @@ const player1InitialState = [
     cellSelectionPlayer: -1,
     touchDiceBlock: false,
     winner: null,
+    fireworks: false,
   };
   

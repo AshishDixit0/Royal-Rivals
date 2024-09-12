@@ -41,7 +41,7 @@ export class BackgroundImages {
     },
     {
       name: 5,
-      image: require("../assets/images/dice2.png"),
+      image: require("../assets/images/dice5.png"),
     },
     {
       name: 6,

@@ -3,6 +3,8 @@ import React from 'react';
 import { Polygon, Svg, Image, ClipPath, Defs } from 'react-native-svg';
 import { Colors } from '@/constants/Colors';
 import { BgImages } from '@/utils/GetBgImage';
+import LottieView from 'lottie-react-native';
+import Fireworks from '@/assets/animation/firework.json';
 
 interface FourTriangles{
   player1:{},
@@ -13,11 +15,14 @@ interface FourTriangles{
 }
 
 const FourTriangles = ({player1, player2, player3, player4}:FourTriangles) => {
-  const size = 200;
- 
-
+  const size = 300;
+  const [blast, setBlast] = React.useState(false);
   return (
     <View style={styles.mainContainer}>
+      {blast && (
+        <LottieView source={Fireworks} autoPlay loop hardwareAccelerationAndroid speed={1} style={styles.lottieView} />
+      )}
+
       <Svg height={size} width={size - 5}>
         <Defs>
           <ClipPath id="clip1">
@@ -49,13 +54,15 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     borderWidth: 0.8,
-    width: 70.46,
-    height: 70.46,
+    width: '20%',
+    height: '100%',
     overflow: 'hidden',
-    // backgroundColor: 'red',
     borderColor: 'black',
-    
-    // margin:2
-    
   },
+  lottieView: {
+    width: '100%',
+    height: '100%',
+    position: 'absolute',
+    zIndex: 1,
+  }
 });

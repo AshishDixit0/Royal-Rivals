@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from "react-query";
 import { Provider } from "react-redux";
-import { store } from "@/store";
+import { store } from "@/store/store";
 import AuthNavigator from "@/navigation";
 import AccountStack from "@/navigation/AccountStack";
 

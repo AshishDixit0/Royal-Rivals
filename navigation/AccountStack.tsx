@@ -17,10 +17,10 @@ import GameScreen from "@/app/Screen/HomeScreen";
 import GameHeader from "@/components/GameHeader/GameHeader";
 import Footer from "@/components/Footer";
 import { Profile } from "@/app/Screen/Profile";
-import LudoScreen from "@/app/Screen/ludoScreen";
+// import LudoScreen from "@/app/Screen/ludoScreen";
 import NotificationScreen from "@/app/Screen/NotificationScreen";
 import HelpScreen from "@/app/Screen/helpScreen";
-
+import Ludo from '@/screen/Games/Ludo';
 const Stack = createNativeStackNavigator<AccountStackParamList>();
 const Tab = createBottomTabNavigator();
 
@@ -54,7 +54,7 @@ const AccountStack = () => (
         headerTransparent: true,
         headerTitle: "",
       })}
-      component={LudoScreen}
+      component={Ludo}
       name={"LudoScreen"}
     />
     <Stack.Screen

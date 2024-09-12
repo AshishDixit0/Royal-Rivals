@@ -23,7 +23,7 @@ export const safeSpot = [
 export const starSpot = [9, 22, 35, 48];
 export const arrowSpot = [12, 51, 38, 25];
 export const turningPoint = [52, 13, 26, 39];
-export const victoryStart = [12, 51, 38, 25];
+export const victoryStart = [111, 221, 331, 441];
 export const startingPoint = [1, 14, 27, 40];
 
 export const colorPlayer = [

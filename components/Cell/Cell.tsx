@@ -1,7 +1,7 @@
 import { StyleSheet, Text, View,Image } from 'react-native'
 import React, { useCallback, useMemo } from 'react'
 import Pile from '../Pile/Pile'
-import { arrowSpot, safeSpot, starSpot } from '@/Utils/PlotData'
+import { arrowSpot, safeSpot, starSpot } from '@/utils/PlotData'
 import { useDispatch, useSelector } from 'react-redux'
 import { selectCurrentPostions } from '@/store/Reducers/gameSelection'
 import { Colors } from '@/constants/Colors'

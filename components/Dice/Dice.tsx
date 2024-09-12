@@ -2,7 +2,7 @@ import { StyleSheet, Text, View, Image, TouchableOpacity } from "react-native";
 import React from "react";
 import { LinearGradient } from "expo-linear-gradient";
 import { Colors } from "@/constants/Colors";
-import { BackgroundImages } from "@/Utils/GetIcon";
+import { BackgroundImages } from "@/utils/GetIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { selectCurrentPlayerChance, selectDiceNo, selectDiceRolled } from "@/store/Reducers/gameSelection";
 import { RootState } from "@/store";

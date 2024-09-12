@@ -1,15 +1,23 @@
 import { configureStore } from '@reduxjs/toolkit';
-import authReducer from './AuthSlice';
-import gameReducer from './Reducers/gameSlice';
+import reduxStorage from './storage';
+import { FLUSH, PAUSE, PERSIST, persistReducer, persistStore, PURGE, REGISTER, REHYDRATE } from 'redux-persist'
+import rootReducer from './rootReducers';
 
+const persistConfig = {
+  key: 'root',
+  storage: reduxStorage,
+  whitelist: ['game'],
+};
+
+const persistedReducer = persistReducer(persistConfig, rootReducer)
 export const store = configureStore({
-  reducer: {
-    auth: authReducer,
-    game: gameReducer,
-  },
-});
+  reducer: persistedReducer,
+  middleware: getDefaultMiddleware => 
+    getDefaultMiddleware({
+      serializableCheck: {
+        ignoredActions: [FLUSH, REGISTER, REHYDRATE, PAUSE, PURGE, PERSIST]
+      }
+    })
+})
 
-// Infer the `RootState` and `AppDispatch` types from the store itself
-export type RootState = ReturnType<typeof store.getState>;
-// Inferred type: {auth: AuthState, game: GameState}
-export type AppDispatch = typeof store.dispatch;
+export const persistor = persistStore(store);
