@@ -7,10 +7,10 @@ import LottieView from 'lottie-react-native';
 import Fireworks from '@/assets/animation/firework.json';
 
 interface FourTriangles{
-  player1:{},
-  player2:{},
-  player3:{},
-  player4:{},
+  player1?:{},
+  player2?:{},
+  player3?:{},
+  player4?:{},
 
 }
 
